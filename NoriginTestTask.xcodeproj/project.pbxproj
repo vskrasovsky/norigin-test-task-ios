@@ -54,6 +54,9 @@
 		CE536DB52135797D00A1F7F1 /* NoriginTestTask */ = {
 			isa = PBXGroup;
 			children = (
+				CE536DCC21358DD500A1F7F1 /* UI */,
+				CE536DCB21358DD000A1F7F1 /* Services */,
+				CE536DCA21358D5F00A1F7F1 /* Models */,
 				CE536DB62135797D00A1F7F1 /* AppDelegate.swift */,
 				CE536DB82135797D00A1F7F1 /* ViewController.swift */,
 				CE536DBA2135797D00A1F7F1 /* Main.storyboard */,
@@ -62,6 +65,27 @@
 				CE536DC22135797D00A1F7F1 /* Info.plist */,
 			);
 			path = NoriginTestTask;
+			sourceTree = "<group>";
+		};
+		CE536DCA21358D5F00A1F7F1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE536DCB21358DD000A1F7F1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CE536DCC21358DD500A1F7F1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
