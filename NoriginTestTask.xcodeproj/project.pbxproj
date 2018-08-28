@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34587567C877D89CF9F2F6DE /* Pods_NoriginTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E012EA9419BC07F8211D44 /* Pods_NoriginTestTask.framework */; };
 		CE536DB72135797D00A1F7F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DB62135797D00A1F7F1 /* AppDelegate.swift */; };
 		CE536DB92135797D00A1F7F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DB82135797D00A1F7F1 /* ViewController.swift */; };
 		CE536DBC2135797D00A1F7F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE536DBA2135797D00A1F7F1 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34E012EA9419BC07F8211D44 /* Pods_NoriginTestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoriginTestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		501EE334FF93E745E32D6BCD /* Pods-NoriginTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoriginTestTask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoriginTestTask/Pods-NoriginTestTask.debug.xcconfig"; sourceTree = "<group>"; };
+		B7E419F44C011B0466E3422A /* Pods-NoriginTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoriginTestTask.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoriginTestTask/Pods-NoriginTestTask.release.xcconfig"; sourceTree = "<group>"; };
 		CE536DB32135797D00A1F7F1 /* NoriginTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoriginTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE536DB62135797D00A1F7F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE536DB82135797D00A1F7F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34587567C877D89CF9F2F6DE /* Pods_NoriginTestTask.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		737CB0426E57BB648681AAE5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				501EE334FF93E745E32D6BCD /* Pods-NoriginTestTask.debug.xcconfig */,
+				B7E419F44C011B0466E3422A /* Pods-NoriginTestTask.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CE536DAA2135797D00A1F7F1 = {
 			isa = PBXGroup;
 			children = (
 				CE536DB52135797D00A1F7F1 /* NoriginTestTask */,
 				CE536DB42135797D00A1F7F1 /* Products */,
+				737CB0426E57BB648681AAE5 /* Pods */,
+				FFF660F0D4D25D025EE947FA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +104,14 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		FFF660F0D4D25D025EE947FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				34E012EA9419BC07F8211D44 /* Pods_NoriginTestTask.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -95,9 +119,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE536DC52135797D00A1F7F1 /* Build configuration list for PBXNativeTarget "NoriginTestTask" */;
 			buildPhases = (
+				A21F250B0CD5E5BE08988B34 /* [CP] Check Pods Manifest.lock */,
 				CE536DAF2135797D00A1F7F1 /* Sources */,
 				CE536DB02135797D00A1F7F1 /* Frameworks */,
 				CE536DB12135797D00A1F7F1 /* Resources */,
+				6860E094418B70A71B3EA07F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -153,6 +179,49 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6860E094418B70A71B3EA07F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NoriginTestTask/Pods-NoriginTestTask-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TRON/TRON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TRON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoriginTestTask/Pods-NoriginTestTask-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A21F250B0CD5E5BE08988B34 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NoriginTestTask-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE536DAF2135797D00A1F7F1 /* Sources */ = {
@@ -302,15 +371,13 @@
 		};
 		CE536DC62135797D00A1F7F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 501EE334FF93E745E32D6BCD /* Pods-NoriginTestTask.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 756MY5Q7G9;
 				INFOPLIST_FILE = NoriginTestTask/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scnsoft.NoriginTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -320,15 +387,13 @@
 		};
 		CE536DC72135797D00A1F7F1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7E419F44C011B0466E3422A /* Pods-NoriginTestTask.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 756MY5Q7G9;
 				INFOPLIST_FILE = NoriginTestTask/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scnsoft.NoriginTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
