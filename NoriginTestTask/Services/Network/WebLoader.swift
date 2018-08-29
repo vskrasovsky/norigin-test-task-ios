@@ -17,7 +17,6 @@ protocol WebLoader {
 }
 
 final class TRONWebLoader: WebLoader {
-    
     let log = false
     let tron: TRON
     
@@ -28,7 +27,9 @@ final class TRONWebLoader: WebLoader {
     
     func load<Model: Decodable>(config: RequestConfig, headers: [String: String]?) -> Promise<Model> {
         return Promise { seal in
-            let request: APIRequest<Model, JSON> = self.tron.codable.request(config.path)
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            let request: APIRequest<Model, JSON> = self.tron.codable(modelDecoder: decoder, errorDecoder: decoder).request(config.path)
             request.headers = headers ?? [:]
             request.parameters = config.parameters
             request.method = config.method

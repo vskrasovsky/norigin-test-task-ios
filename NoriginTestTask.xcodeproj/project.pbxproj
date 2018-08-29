@@ -16,6 +16,10 @@
 		CE536DD02135BC7800A1F7F1 /* WebLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DCF2135BC7800A1F7F1 /* WebLoader.swift */; };
 		CE536DD22135BC8300A1F7F1 /* RequestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DD12135BC8300A1F7F1 /* RequestConfig.swift */; };
 		CE536DD62135D00200A1F7F1 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DD52135D00200A1F7F1 /* WebService.swift */; };
+		CE536DD82136857100A1F7F1 /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DD72136857100A1F7F1 /* Program.swift */; };
+		CE536DDB213699CF00A1F7F1 /* EPGRESTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DDA213699CF00A1F7F1 /* EPGRESTService.swift */; };
+		CE536DDD21369B0100A1F7F1 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DDC21369B0100A1F7F1 /* Channel.swift */; };
+		CE536DDF21369CB400A1F7F1 /* EPG.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DDE21369CB400A1F7F1 /* EPG.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		CE536DCF2135BC7800A1F7F1 /* WebLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebLoader.swift; sourceTree = "<group>"; };
 		CE536DD12135BC8300A1F7F1 /* RequestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestConfig.swift; sourceTree = "<group>"; };
 		CE536DD52135D00200A1F7F1 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		CE536DD72136857100A1F7F1 /* Program.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
+		CE536DDA213699CF00A1F7F1 /* EPGRESTService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGRESTService.swift; sourceTree = "<group>"; };
+		CE536DDC21369B0100A1F7F1 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		CE536DDE21369CB400A1F7F1 /* EPG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPG.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,9 +84,10 @@
 		CE536DB52135797D00A1F7F1 /* NoriginTestTask */ = {
 			isa = PBXGroup;
 			children = (
-				CE536DCC21358DD500A1F7F1 /* UI */,
-				CE536DCB21358DD000A1F7F1 /* Services */,
 				CE536DCA21358D5F00A1F7F1 /* Models */,
+				CE536DCB21358DD000A1F7F1 /* Services */,
+				CE536DCC21358DD500A1F7F1 /* UI */,
+				CE536DD92136997100A1F7F1 /* Extensions */,
 				CE536DB62135797D00A1F7F1 /* AppDelegate.swift */,
 				CE536DB82135797D00A1F7F1 /* ViewController.swift */,
 				CE536DBA2135797D00A1F7F1 /* Main.storyboard */,
@@ -92,6 +101,9 @@
 		CE536DCA21358D5F00A1F7F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE536DDC21369B0100A1F7F1 /* Channel.swift */,
+				CE536DDE21369CB400A1F7F1 /* EPG.swift */,
+				CE536DD72136857100A1F7F1 /* Program.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -117,8 +129,16 @@
 				CE536DD12135BC8300A1F7F1 /* RequestConfig.swift */,
 				CE536DCF2135BC7800A1F7F1 /* WebLoader.swift */,
 				CE536DD52135D00200A1F7F1 /* WebService.swift */,
+				CE536DDA213699CF00A1F7F1 /* EPGRESTService.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		CE536DD92136997100A1F7F1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FFF660F0D4D25D025EE947FA /* Frameworks */ = {
@@ -248,7 +268,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE536DB92135797D00A1F7F1 /* ViewController.swift in Sources */,
+				CE536DDF21369CB400A1F7F1 /* EPG.swift in Sources */,
+				CE536DDD21369B0100A1F7F1 /* Channel.swift in Sources */,
 				CE536DD22135BC8300A1F7F1 /* RequestConfig.swift in Sources */,
+				CE536DD82136857100A1F7F1 /* Program.swift in Sources */,
+				CE536DDB213699CF00A1F7F1 /* EPGRESTService.swift in Sources */,
 				CE536DB72135797D00A1F7F1 /* AppDelegate.swift in Sources */,
 				CE536DD62135D00200A1F7F1 /* WebService.swift in Sources */,
 				CE536DD02135BC7800A1F7F1 /* WebLoader.swift in Sources */,

@@ -19,27 +19,22 @@ protocol RequestConfig {
     var parameters: Parameters { get }
 }
 
-enum CommonInfoRequestConfig: RequestConfig {
-    
-    case allAutoBrands
-    case allWorkshopServices
+enum EPGRequestConfig: RequestConfig {
+    case epg
     
     var path: String {
         switch self {
-        case .allAutoBrands:        return "/info/GetAutobrands?autotype=1"
-        case .allWorkshopServices:  return "/info/gethierarchical"
+        case .epg:        return "/epg"
         }
     }
     var method: HTTPMethod {
         switch self {
-        case .allAutoBrands:            return .get
-        case .allWorkshopServices:      return .get
+        case .epg:            return .get
         }
     }
     var parameters: Parameters {
         switch self {
-        case .allAutoBrands:            return [:]
-        case .allWorkshopServices:      return [:]
+        case .epg:            return [:]
         }
     }
 }
