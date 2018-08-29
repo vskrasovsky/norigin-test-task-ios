@@ -13,6 +13,9 @@
 		CE536DBC2135797D00A1F7F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE536DBA2135797D00A1F7F1 /* Main.storyboard */; };
 		CE536DBE2135797D00A1F7F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE536DBD2135797D00A1F7F1 /* Assets.xcassets */; };
 		CE536DC12135797D00A1F7F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE536DBF2135797D00A1F7F1 /* LaunchScreen.storyboard */; };
+		CE536DD02135BC7800A1F7F1 /* WebLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DCF2135BC7800A1F7F1 /* WebLoader.swift */; };
+		CE536DD22135BC8300A1F7F1 /* RequestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DD12135BC8300A1F7F1 /* RequestConfig.swift */; };
+		CE536DD62135D00200A1F7F1 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DD52135D00200A1F7F1 /* WebService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		CE536DBD2135797D00A1F7F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE536DC02135797D00A1F7F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE536DC22135797D00A1F7F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE536DCF2135BC7800A1F7F1 /* WebLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebLoader.swift; sourceTree = "<group>"; };
+		CE536DD12135BC8300A1F7F1 /* RequestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestConfig.swift; sourceTree = "<group>"; };
+		CE536DD52135D00200A1F7F1 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,7 @@
 		CE536DCB21358DD000A1F7F1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CE536DCE2135BB7500A1F7F1 /* Network */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -102,6 +109,16 @@
 			children = (
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		CE536DCE2135BB7500A1F7F1 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CE536DD12135BC8300A1F7F1 /* RequestConfig.swift */,
+				CE536DCF2135BC7800A1F7F1 /* WebLoader.swift */,
+				CE536DD52135D00200A1F7F1 /* WebService.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		FFF660F0D4D25D025EE947FA /* Frameworks */ = {
@@ -189,12 +206,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NoriginTestTask/Pods-NoriginTestTask-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TRON/TRON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TRON.framework",
 			);
@@ -229,7 +248,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE536DB92135797D00A1F7F1 /* ViewController.swift in Sources */,
+				CE536DD22135BC8300A1F7F1 /* RequestConfig.swift in Sources */,
 				CE536DB72135797D00A1F7F1 /* AppDelegate.swift in Sources */,
+				CE536DD62135D00200A1F7F1 /* WebService.swift in Sources */,
+				CE536DD02135BC7800A1F7F1 /* WebLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,7 +399,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 756MY5Q7G9;
 				INFOPLIST_FILE = NoriginTestTask/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scnsoft.NoriginTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -393,7 +418,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 756MY5Q7G9;
 				INFOPLIST_FILE = NoriginTestTask/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scnsoft.NoriginTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
