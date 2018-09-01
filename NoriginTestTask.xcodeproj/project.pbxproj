@@ -31,6 +31,7 @@
 		CE92FD222139F22900FB7FE7 /* HourCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD212139F22900FB7FE7 /* HourCellViewModel.swift */; };
 		CE92FD24213A81BC00FB7FE7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD23213A81BC00FB7FE7 /* Date.swift */; };
 		CE92FD26213A893800FB7FE7 /* HourCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD25213A893800FB7FE7 /* HourCell.swift */; };
+		CE92FD28213AA3B500FB7FE7 /* TimePositionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE92FD27213AA3B500FB7FE7 /* TimePositionView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		CE92FD212139F22900FB7FE7 /* HourCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCellViewModel.swift; sourceTree = "<group>"; };
 		CE92FD23213A81BC00FB7FE7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		CE92FD25213A893800FB7FE7 /* HourCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCell.swift; sourceTree = "<group>"; };
+		CE92FD27213AA3B500FB7FE7 /* TimePositionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimePositionView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				CE7FDAE0213938EA00C4844E /* ProgramCell.swift */,
 				CE92FD1F21398A9700FB7FE7 /* ChannelCell.swift */,
 				CE92FD25213A893800FB7FE7 /* HourCell.swift */,
+				CE92FD27213AA3B500FB7FE7 /* TimePositionView.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE92FD28213AA3B500FB7FE7 /* TimePositionView.xib in Resources */,
 				CE536DC12135797D00A1F7F1 /* LaunchScreen.storyboard in Resources */,
 				CE536DBE2135797D00A1F7F1 /* Assets.xcassets in Resources */,
 				CE536DBC2135797D00A1F7F1 /* Main.storyboard in Resources */,

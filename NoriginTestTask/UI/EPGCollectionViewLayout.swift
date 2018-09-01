@@ -11,10 +11,11 @@ import UIKit
 protocol EPGCollectionViewLayoutDelegate: class {
     func collectionViewContentWidth(_ collectionView: UICollectionView) -> CGFloat
     func collectionView(_ collectionView: UICollectionView, xOffsetForItemAt indexPath: IndexPath) -> CGFloat
+    func collectionViewXOffsetForTimePosition(_ collectionView: UICollectionView) -> CGFloat
     func collectionView(_ collectionView: UICollectionView, widthForItemAt indexPath: IndexPath) -> CGFloat
 }
 
-class EPGCollectionViewLayout: UICollectionViewLayout {
+class EPGCollectionViewLayout: UICollectionViewFlowLayout {
     weak var delegate: EPGCollectionViewLayoutDelegate!
     
     fileprivate var hourHeight: CGFloat = 40
@@ -75,6 +76,12 @@ class EPGCollectionViewLayout: UICollectionViewLayout {
                 }
             }
         }
+        if let decatts = self.layoutAttributesForDecorationView(
+            ofKind:timePositionKind, at: IndexPath(item: 0, section: 0)) {
+                cache.append(decatts)
+        }
+
+        
     }
     
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
@@ -96,10 +103,40 @@ class EPGCollectionViewLayout: UICollectionViewLayout {
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return cache[indexPath.item]
     }
+    
+    override func layoutAttributesForDecorationView(
+        ofKind elementKind: String, at indexPath: IndexPath)
+        -> UICollectionViewLayoutAttributes? {
+            guard let collectionView = collectionView else { return nil }
+            if elementKind == timePositionKind {
+                let atts = UICollectionViewLayoutAttributes(
+                    forDecorationViewOfKind:timePositionKind, with:indexPath)
+                atts.zIndex = 3
+                let xOffset = delegate.collectionViewXOffsetForTimePosition(collectionView)
+                let centerX = channelCellWidth + xOffset
+                let height: CGFloat
+                if xOffset > collectionView.contentOffset.x {
+                    height = hourHeight + CGFloat(collectionView.numberOfSections - 1) * sectionHeight
+                } else {
+                    height = hourHeight
+                }
+                atts.frame = CGRect(x: centerX, y: 3, width: 4, height: height)
+                return atts
+            }
+            return nil
+    }
+
 }
 
-extension CGFloat {
-    var whole: CGFloat {
-        return CGFloat(Int(self))
+class MyTitleView : UICollectionReusableView {
+    override init(frame: CGRect) {
+        super.init(frame:frame)
+        let lab = UIView(frame: self.bounds)
+        self.addSubview(lab)
+        lab.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        lab.backgroundColor = .yellow
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

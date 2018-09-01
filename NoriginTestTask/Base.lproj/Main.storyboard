@@ -161,11 +161,20 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Cgw-UD-yjh"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Efe-9x-MSr">
+                                <rect key="frame" x="299" y="558" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="scrollToNowPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C1a-OU-RUx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.4549019608" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Efe-9x-MSr" secondAttribute="bottom" constant="30" id="SAL-YZ-reJ"/>
                             <constraint firstItem="q6u-Of-CwU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="d32-xg-obo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="q6u-Of-CwU" secondAttribute="bottom" id="eJX-x3-VXk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Efe-9x-MSr" secondAttribute="trailing" constant="30" id="lxj-oA-fng"/>
                             <constraint firstItem="q6u-Of-CwU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="nPt-rR-ggM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="q6u-Of-CwU" secondAttribute="trailing" id="pFV-N2-1WO"/>
                         </constraints>

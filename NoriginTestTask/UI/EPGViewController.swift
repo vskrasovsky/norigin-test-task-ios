@@ -9,6 +9,8 @@
 import PromiseKit
 import UIKit
 
+let timePositionKind = "TimePositionView"
+
 class EPGViewController: UIViewController {
 
     
@@ -16,6 +18,8 @@ class EPGViewController: UIViewController {
         didSet {
             if let layout = collectionView?.collectionViewLayout as? EPGCollectionViewLayout {
                 layout.delegate = self
+                layout.register(UINib(nibName: "TimePositionView", bundle: nil), forDecorationViewOfKind: timePositionKind)
+
             }
             collectionView.backgroundColor = UIColor.separator
         }
@@ -37,8 +41,12 @@ class EPGViewController: UIViewController {
         return epgViewModel?.channels ?? []
     }
 
+    var timer: Timer?
+
     let oneHourWidth: CGFloat = 270
-    
+    let updateInterval: TimeInterval = 3
+    var currentDate = Date()
+
     var contentWidth: CGFloat {
         guard let epgViewModel = epgViewModel else {
             return 0
@@ -56,8 +64,25 @@ class EPGViewController: UIViewController {
         }.catch { error in
             print(error.localizedDescription)
         }
+        
+        timer = Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true, block: { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.currentDate = Date()
+            if let layout = strongSelf.collectionView.collectionViewLayout as? EPGCollectionViewLayout {
+                layout.invalidateLayout()
+            }
+        })
     }
 
+    @IBAction func scrollToNowPressed(_ sender: UIButton) {
+        let currentContentOffset = collectionView.contentOffset
+        guard let epg = epgViewModel else { return }
+        let ratio = (currentDate.timeIntervalSince1970 - epg.startInterval) / epg.duration
+        // FIX ME:
+        let offset =  CGFloat(ratio * Double(contentWidth)) - (collectionView.bounds.width - 75) / 2
+        collectionView.setContentOffset(CGPoint(x: offset, y: currentContentOffset.y), animated: true)
+    }
+    
 }
 
 extension EPGViewController: EPGCollectionViewLayoutDelegate {
@@ -87,6 +112,13 @@ extension EPGViewController: EPGCollectionViewLayoutDelegate {
             let width = CGFloat((programViewModel.endRatio - programViewModel.startRatio) * Double(contentWidth))
             return width
         }
+    }
+    
+    func collectionViewXOffsetForTimePosition(_ collectionView: UICollectionView) -> CGFloat {
+        guard let epg = epgViewModel else { return 0 }
+        let ratio = (currentDate.timeIntervalSince1970 - epg.startInterval) / epg.duration
+        let offset =  CGFloat(ratio * Double(contentWidth))
+        return offset
     }
 }
 
