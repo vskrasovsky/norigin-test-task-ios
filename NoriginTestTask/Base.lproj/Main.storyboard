@@ -262,7 +262,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.95686274510000002" green="0.4549019608" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="12Y-ou-D4F" secondAttribute="top" id="Dfb-QA-K51"/>
                             <constraint firstItem="q6u-Of-CwU" firstAttribute="top" secondItem="12Y-ou-D4F" secondAttribute="bottom" id="Hty-98-yjg"/>
@@ -301,7 +300,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="70s-5k-1A4"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="bookTab" id="1hi-sl-at3"/>
+                    <tabBarItem key="tabBarItem" title="" image="bookTab" id="1hi-sl-at3">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OfV-r0-7ps" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -317,7 +318,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bt0-lV-Pbd"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="playTab" id="HF0-lQ-wYt"/>
+                    <tabBarItem key="tabBarItem" title="" image="playTab" id="HF0-lQ-wYt">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wl2-vs-pFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -333,7 +336,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="25V-KA-Acb"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="tvTab" id="PmG-0O-RHL"/>
+                    <tabBarItem key="tabBarItem" title="" image="tvTab" id="PmG-0O-RHL">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1P5-Fd-kbh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -349,7 +354,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="tau-hm-9ca"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="homeTab" id="xvx-qR-5YW"/>
+                    <tabBarItem key="tabBarItem" title="" image="homeTab" id="xvx-qR-5YW">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2B-0r-T8K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -380,7 +387,9 @@
         <scene sceneID="xDF-fI-WQZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EhD-Ct-ubG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="listTab" id="Jgm-ea-1c8"/>
+                    <tabBarItem key="tabBarItem" title="" image="listTab" id="Jgm-ea-1c8">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dDM-ZN-YSr">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
