@@ -21,6 +21,7 @@ class EPGCollectionViewLayout: UICollectionViewFlowLayout {
     fileprivate var hourHeight: CGFloat = 40
     fileprivate var sectionHeight: CGFloat = 65
     fileprivate var channelCellWidth: CGFloat = 75
+    fileprivate var timePositionViewYOffset: CGFloat = 3
 
     fileprivate var cache = [UICollectionViewLayoutAttributes]()
     
@@ -115,12 +116,12 @@ class EPGCollectionViewLayout: UICollectionViewFlowLayout {
                 let xOffset = delegate.collectionViewXOffsetForTimePosition(collectionView)
                 let centerX = channelCellWidth + xOffset
                 let height: CGFloat
-                if xOffset > collectionView.contentOffset.x {
-                    height = hourHeight + CGFloat(collectionView.numberOfSections - 1) * sectionHeight
+                if xOffset >= collectionView.contentOffset.x {
+                    height = (hourHeight - timePositionViewYOffset) + CGFloat(collectionView.numberOfSections - 1) * sectionHeight - collectionView.contentOffset.y
                 } else {
-                    height = hourHeight
+                    height = hourHeight - timePositionViewYOffset
                 }
-                atts.frame = CGRect(x: centerX, y: 3, width: 4, height: height)
+                atts.frame = CGRect(x: centerX, y: collectionView.contentOffset.y + timePositionViewYOffset, width: 4, height: height)
                 return atts
             }
             return nil
