@@ -19,16 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func setUpAppearance() {
+        UIApplication.shared.statusBarStyle = .lightContent
+
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().barTintColor = .blue
-        
+        UINavigationBar.appearance().barTintColor = .navigationBackground
         UINavigationBar.appearance().tintColor = .barTint
 
 //        UITabBar.appearance().tintColor = .defaultTintColor
 //        UITextField.appearance().tintColor = .black
 //        UISwitch.appearance().onTintColor = .richElectricBlue
 //        
-//        UIApplication.shared.statusBarStyle = .lightContent
     }
 
 }
