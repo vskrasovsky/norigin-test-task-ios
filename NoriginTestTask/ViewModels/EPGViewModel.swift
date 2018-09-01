@@ -10,6 +10,7 @@ import Foundation
 
 struct EPGViewModel {
     let hours: [HourCellViewModel]
+    let days: [DayCellViewModel]
     let channels: [ChannelViewModel]
     let startInterval: TimeInterval
     let endInterval: TimeInterval
@@ -54,5 +55,17 @@ struct EPGViewModel {
             hour = hourLater
         }
         self.hours = hourCellViewModels
+        
+        var day = start.startOfDay()
+        let endDay = end.startOfDay()
+        var dayCellViewModels = [DayCellViewModel]()
+        while day <= endDay {
+            let dayOfWeekStr = DateFormatter.dayOfWeekFormatter.string(from: day)
+            let dateStr = DateFormatter.dayMonthDateFormatter.string(from: day)
+            dayCellViewModels.append(DayCellViewModel(date: day, dayOfWeekStr: dayOfWeekStr, dateStr: dateStr))
+            day = day.dayLater()
+        }
+        self.days = dayCellViewModels
+
     }
 }

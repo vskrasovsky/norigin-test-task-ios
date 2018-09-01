@@ -32,6 +32,9 @@
 		CE92FD24213A81BC00FB7FE7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD23213A81BC00FB7FE7 /* Date.swift */; };
 		CE92FD26213A893800FB7FE7 /* HourCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD25213A893800FB7FE7 /* HourCell.swift */; };
 		CE92FD28213AA3B500FB7FE7 /* TimePositionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE92FD27213AA3B500FB7FE7 /* TimePositionView.xib */; };
+		CE92FD2C213ABC8A00FB7FE7 /* DaysListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD2B213ABC8A00FB7FE7 /* DaysListView.swift */; };
+		CE92FD2E213ABDF800FB7FE7 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD2D213ABDF800FB7FE7 /* DayCell.swift */; };
+		CE92FD30213ABFBE00FB7FE7 /* DayCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD2F213ABFBE00FB7FE7 /* DayCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +67,9 @@
 		CE92FD23213A81BC00FB7FE7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		CE92FD25213A893800FB7FE7 /* HourCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCell.swift; sourceTree = "<group>"; };
 		CE92FD27213AA3B500FB7FE7 /* TimePositionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimePositionView.xib; sourceTree = "<group>"; };
+		CE92FD2B213ABC8A00FB7FE7 /* DaysListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysListView.swift; sourceTree = "<group>"; };
+		CE92FD2D213ABDF800FB7FE7 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
+		CE92FD2F213ABFBE00FB7FE7 /* DayCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,11 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				CE536DB82135797D00A1F7F1 /* EPGViewController.swift */,
-				CE7FDADE213836DB00C4844E /* EPGCollectionViewLayout.swift */,
-				CE7FDAE0213938EA00C4844E /* ProgramCell.swift */,
-				CE92FD1F21398A9700FB7FE7 /* ChannelCell.swift */,
-				CE92FD25213A893800FB7FE7 /* HourCell.swift */,
-				CE92FD27213AA3B500FB7FE7 /* TimePositionView.xib */,
+				CE92FD2A213ABC5500FB7FE7 /* DaysList */,
+				CE92FD29213ABC4400FB7FE7 /* EPG */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -181,8 +184,30 @@
 				CE7FDB052139408F00C4844E /* ChannelViewModel.swift */,
 				CE7FDB07213940AA00C4844E /* ProgramCellViewModel.swift */,
 				CE92FD212139F22900FB7FE7 /* HourCellViewModel.swift */,
+				CE92FD2F213ABFBE00FB7FE7 /* DayCellViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CE92FD29213ABC4400FB7FE7 /* EPG */ = {
+			isa = PBXGroup;
+			children = (
+				CE7FDADE213836DB00C4844E /* EPGCollectionViewLayout.swift */,
+				CE7FDAE0213938EA00C4844E /* ProgramCell.swift */,
+				CE92FD1F21398A9700FB7FE7 /* ChannelCell.swift */,
+				CE92FD25213A893800FB7FE7 /* HourCell.swift */,
+				CE92FD27213AA3B500FB7FE7 /* TimePositionView.xib */,
+			);
+			path = EPG;
+			sourceTree = "<group>";
+		};
+		CE92FD2A213ABC5500FB7FE7 /* DaysList */ = {
+			isa = PBXGroup;
+			children = (
+				CE92FD2B213ABC8A00FB7FE7 /* DaysListView.swift */,
+				CE92FD2D213ABDF800FB7FE7 /* DayCell.swift */,
+			);
+			path = DaysList;
 			sourceTree = "<group>";
 		};
 		FFF660F0D4D25D025EE947FA /* Frameworks */ = {
@@ -323,6 +348,8 @@
 				CE7FDB0C213985BF00C4844E /* Color.swift in Sources */,
 				CE536DD22135BC8300A1F7F1 /* RequestConfig.swift in Sources */,
 				CE7FDB042139406400C4844E /* EPGViewModel.swift in Sources */,
+				CE92FD2C213ABC8A00FB7FE7 /* DaysListView.swift in Sources */,
+				CE92FD2E213ABDF800FB7FE7 /* DayCell.swift in Sources */,
 				CE7FDB08213940AA00C4844E /* ProgramCellViewModel.swift in Sources */,
 				CE536DD82136857100A1F7F1 /* Program.swift in Sources */,
 				CE7FDB0A2139460700C4844E /* DateFormatter.swift in Sources */,
@@ -334,6 +361,7 @@
 				CE92FD24213A81BC00FB7FE7 /* Date.swift in Sources */,
 				CE536DD62135D00200A1F7F1 /* WebService.swift in Sources */,
 				CE536DD02135BC7800A1F7F1 /* WebLoader.swift in Sources */,
+				CE92FD30213ABFBE00FB7FE7 /* DayCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

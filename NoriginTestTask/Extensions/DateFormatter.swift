@@ -15,4 +15,17 @@ extension DateFormatter {
         formatter.timeStyle = .short
         return formatter
     }()
+    
+    static let dayOfWeekFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E"
+        return formatter
+    }()
+
+    static let dayMonthDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM"
+        return formatter
+    }()
+
 }

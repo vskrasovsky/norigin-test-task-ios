@@ -13,7 +13,12 @@ let timePositionKind = "TimePositionView"
 
 class EPGViewController: UIViewController {
 
-    
+    @IBOutlet weak var daysListView: DaysListView! {
+        didSet {
+            daysListView.delegate = self
+        }
+    }
+
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             if let layout = collectionView?.collectionViewLayout as? EPGCollectionViewLayout {
@@ -35,6 +40,12 @@ class EPGViewController: UIViewController {
     
     var hours: [HourCellViewModel] {
         return epgViewModel?.hours ?? []
+    }
+    
+    var days: [DayCellViewModel] = [] {
+        didSet {
+            daysListView.days = days
+        }
     }
 
     var channels: [ChannelViewModel] {
@@ -61,6 +72,7 @@ class EPGViewController: UIViewController {
         }.map(EPGViewModel.init)
         .done { [weak self] epgViewModel in
             self?.epgViewModel = epgViewModel
+            self?.days = epgViewModel.days
         }.catch { error in
             print(error.localizedDescription)
         }
@@ -82,7 +94,17 @@ class EPGViewController: UIViewController {
         let offset =  CGFloat(ratio * Double(contentWidth)) - (collectionView.bounds.width - 75) / 2
         collectionView.setContentOffset(CGPoint(x: offset, y: currentContentOffset.y), animated: true)
     }
-    
+}
+
+extension EPGViewController: DaysListViewDelegate {
+    func dayListView(_ dayListView: DaysListView, didSelectDayWith date: Date) {
+        guard let epg = epgViewModel else { return }
+        let ratio = (max(epg.startInterval, date.timeIntervalSince1970) - epg.startInterval) / epg.duration
+        let currentContentOffset = collectionView.contentOffset
+        // FIX ME:
+        let offset =  CGFloat(ratio * Double(contentWidth))
+        collectionView.setContentOffset(CGPoint(x: offset, y: currentContentOffset.y), animated: true)
+    }
 }
 
 extension EPGViewController: EPGCollectionViewLayoutDelegate {
@@ -139,7 +161,7 @@ extension EPGViewController: UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourCell", for: indexPath) as! HourCell
-            let hourViewModel = hours[indexPath.row]
+            let hourViewModel = hours[indexPath.item]
             cell.configure(with: hourViewModel.title)
             return cell
         } else {

@@ -59,7 +59,13 @@ extension Date {
     }
 
     
-    
+    func startOfDay() -> Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+    func dayLater() -> Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: self) ?? self
+    }
+
     
     func startOfHour() -> Date {
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour], from: self)
