@@ -15,8 +15,11 @@ extension UIColor {
     static var channelBackground: UIColor {
         return UIColor(named: "channelBackground")!
     }
-    static var navigationBackground: UIColor {
+    static var navigationBarBackground: UIColor {
         return UIColor(named: "navigationBackground")!
+    }
+    static var tabBarBackground: UIColor {
+        return UIColor(named: "channelBackground")!
     }
     static var programActive: UIColor {
         return UIColor(named: "programActive")!

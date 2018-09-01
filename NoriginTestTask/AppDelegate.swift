@@ -22,13 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
 
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().barTintColor = .navigationBackground
+        UINavigationBar.appearance().barTintColor = .navigationBarBackground
         UINavigationBar.appearance().tintColor = .barTint
 
-//        UITabBar.appearance().tintColor = .defaultTintColor
-//        UITextField.appearance().tintColor = .black
-//        UISwitch.appearance().onTintColor = .richElectricBlue
-//        
+        UITabBar.appearance().isTranslucent = false
+        UITabBar.appearance().barTintColor = .tabBarBackground
+        UITabBar.appearance().tintColor = .accent
+        UITabBar.appearance().unselectedItemTintColor = .white
+
     }
 
 }
