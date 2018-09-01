@@ -10,7 +10,7 @@ import Alamofire
 import Foundation
 
 struct BaseConfig {
-    static let baseApiPath = "http://localhost:1337"
+    static let baseApiPath = "http://10.10.2.69:1337"
 }
 
 protocol RequestConfig {

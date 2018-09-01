@@ -6,7 +6,7 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>localhost</key>
+			<key>10.10.2.69</key>
 			<dict>
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
 				<true/>

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		34587567C877D89CF9F2F6DE /* Pods_NoriginTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E012EA9419BC07F8211D44 /* Pods_NoriginTestTask.framework */; };
 		CE536DB72135797D00A1F7F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DB62135797D00A1F7F1 /* AppDelegate.swift */; };
-		CE536DB92135797D00A1F7F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DB82135797D00A1F7F1 /* ViewController.swift */; };
+		CE536DB92135797D00A1F7F1 /* EPGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DB82135797D00A1F7F1 /* EPGViewController.swift */; };
 		CE536DBC2135797D00A1F7F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE536DBA2135797D00A1F7F1 /* Main.storyboard */; };
 		CE536DBE2135797D00A1F7F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE536DBD2135797D00A1F7F1 /* Assets.xcassets */; };
 		CE536DC12135797D00A1F7F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE536DBF2135797D00A1F7F1 /* LaunchScreen.storyboard */; };
@@ -20,6 +20,17 @@
 		CE536DDB213699CF00A1F7F1 /* EPGRESTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DDA213699CF00A1F7F1 /* EPGRESTService.swift */; };
 		CE536DDD21369B0100A1F7F1 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DDC21369B0100A1F7F1 /* Channel.swift */; };
 		CE536DDF21369CB400A1F7F1 /* EPG.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DDE21369CB400A1F7F1 /* EPG.swift */; };
+		CE7FDADF213836DB00C4844E /* EPGCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDADE213836DB00C4844E /* EPGCollectionViewLayout.swift */; };
+		CE7FDAE1213938EA00C4844E /* ProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDAE0213938EA00C4844E /* ProgramCell.swift */; };
+		CE7FDB042139406400C4844E /* EPGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB032139406400C4844E /* EPGViewModel.swift */; };
+		CE7FDB062139408F00C4844E /* ChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB052139408F00C4844E /* ChannelViewModel.swift */; };
+		CE7FDB08213940AA00C4844E /* ProgramCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB07213940AA00C4844E /* ProgramCellViewModel.swift */; };
+		CE7FDB0A2139460700C4844E /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB092139460700C4844E /* DateFormatter.swift */; };
+		CE7FDB0C213985BF00C4844E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB0B213985BF00C4844E /* Color.swift */; };
+		CE92FD2021398A9700FB7FE7 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD1F21398A9700FB7FE7 /* ChannelCell.swift */; };
+		CE92FD222139F22900FB7FE7 /* HourCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD212139F22900FB7FE7 /* HourCellViewModel.swift */; };
+		CE92FD24213A81BC00FB7FE7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD23213A81BC00FB7FE7 /* Date.swift */; };
+		CE92FD26213A893800FB7FE7 /* HourCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD25213A893800FB7FE7 /* HourCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +39,7 @@
 		B7E419F44C011B0466E3422A /* Pods-NoriginTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoriginTestTask.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoriginTestTask/Pods-NoriginTestTask.release.xcconfig"; sourceTree = "<group>"; };
 		CE536DB32135797D00A1F7F1 /* NoriginTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoriginTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE536DB62135797D00A1F7F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE536DB82135797D00A1F7F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE536DB82135797D00A1F7F1 /* EPGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGViewController.swift; sourceTree = "<group>"; };
 		CE536DBB2135797D00A1F7F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE536DBD2135797D00A1F7F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE536DC02135797D00A1F7F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +51,17 @@
 		CE536DDA213699CF00A1F7F1 /* EPGRESTService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGRESTService.swift; sourceTree = "<group>"; };
 		CE536DDC21369B0100A1F7F1 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		CE536DDE21369CB400A1F7F1 /* EPG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPG.swift; sourceTree = "<group>"; };
+		CE7FDADE213836DB00C4844E /* EPGCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGCollectionViewLayout.swift; sourceTree = "<group>"; };
+		CE7FDAE0213938EA00C4844E /* ProgramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCell.swift; sourceTree = "<group>"; };
+		CE7FDB032139406400C4844E /* EPGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGViewModel.swift; sourceTree = "<group>"; };
+		CE7FDB052139408F00C4844E /* ChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewModel.swift; sourceTree = "<group>"; };
+		CE7FDB07213940AA00C4844E /* ProgramCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCellViewModel.swift; sourceTree = "<group>"; };
+		CE7FDB092139460700C4844E /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		CE7FDB0B213985BF00C4844E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		CE92FD1F21398A9700FB7FE7 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
+		CE92FD212139F22900FB7FE7 /* HourCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCellViewModel.swift; sourceTree = "<group>"; };
+		CE92FD23213A81BC00FB7FE7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		CE92FD25213A893800FB7FE7 /* HourCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,9 +109,9 @@
 				CE536DCA21358D5F00A1F7F1 /* Models */,
 				CE536DCB21358DD000A1F7F1 /* Services */,
 				CE536DCC21358DD500A1F7F1 /* UI */,
+				CE7FDB022139404800C4844E /* ViewModels */,
 				CE536DD92136997100A1F7F1 /* Extensions */,
 				CE536DB62135797D00A1F7F1 /* AppDelegate.swift */,
-				CE536DB82135797D00A1F7F1 /* ViewController.swift */,
 				CE536DBA2135797D00A1F7F1 /* Main.storyboard */,
 				CE536DBD2135797D00A1F7F1 /* Assets.xcassets */,
 				CE536DBF2135797D00A1F7F1 /* LaunchScreen.storyboard */,
@@ -119,6 +141,11 @@
 		CE536DCC21358DD500A1F7F1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CE536DB82135797D00A1F7F1 /* EPGViewController.swift */,
+				CE7FDADE213836DB00C4844E /* EPGCollectionViewLayout.swift */,
+				CE7FDAE0213938EA00C4844E /* ProgramCell.swift */,
+				CE92FD1F21398A9700FB7FE7 /* ChannelCell.swift */,
+				CE92FD25213A893800FB7FE7 /* HourCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -137,8 +164,22 @@
 		CE536DD92136997100A1F7F1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CE7FDB092139460700C4844E /* DateFormatter.swift */,
+				CE92FD23213A81BC00FB7FE7 /* Date.swift */,
+				CE7FDB0B213985BF00C4844E /* Color.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CE7FDB022139404800C4844E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CE7FDB032139406400C4844E /* EPGViewModel.swift */,
+				CE7FDB052139408F00C4844E /* ChannelViewModel.swift */,
+				CE7FDB07213940AA00C4844E /* ProgramCellViewModel.swift */,
+				CE92FD212139F22900FB7FE7 /* HourCellViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		FFF660F0D4D25D025EE947FA /* Frameworks */ = {
@@ -226,6 +267,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NoriginTestTask/Pods-NoriginTestTask-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TRON/TRON.framework",
@@ -233,6 +275,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TRON.framework",
@@ -267,13 +310,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE536DB92135797D00A1F7F1 /* ViewController.swift in Sources */,
+				CE92FD222139F22900FB7FE7 /* HourCellViewModel.swift in Sources */,
+				CE536DB92135797D00A1F7F1 /* EPGViewController.swift in Sources */,
+				CE7FDB062139408F00C4844E /* ChannelViewModel.swift in Sources */,
 				CE536DDF21369CB400A1F7F1 /* EPG.swift in Sources */,
 				CE536DDD21369B0100A1F7F1 /* Channel.swift in Sources */,
+				CE7FDAE1213938EA00C4844E /* ProgramCell.swift in Sources */,
+				CE7FDB0C213985BF00C4844E /* Color.swift in Sources */,
 				CE536DD22135BC8300A1F7F1 /* RequestConfig.swift in Sources */,
+				CE7FDB042139406400C4844E /* EPGViewModel.swift in Sources */,
+				CE7FDB08213940AA00C4844E /* ProgramCellViewModel.swift in Sources */,
 				CE536DD82136857100A1F7F1 /* Program.swift in Sources */,
+				CE7FDB0A2139460700C4844E /* DateFormatter.swift in Sources */,
 				CE536DDB213699CF00A1F7F1 /* EPGRESTService.swift in Sources */,
+				CE92FD2021398A9700FB7FE7 /* ChannelCell.swift in Sources */,
+				CE7FDADF213836DB00C4844E /* EPGCollectionViewLayout.swift in Sources */,
+				CE92FD26213A893800FB7FE7 /* HourCell.swift in Sources */,
 				CE536DB72135797D00A1F7F1 /* AppDelegate.swift in Sources */,
+				CE92FD24213A81BC00FB7FE7 /* Date.swift in Sources */,
 				CE536DD62135D00200A1F7F1 /* WebService.swift in Sources */,
 				CE536DD02135BC7800A1F7F1 /* WebLoader.swift in Sources */,
 			);

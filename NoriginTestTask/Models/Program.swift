@@ -14,7 +14,5 @@ struct Program: Decodable {
     var id: String
     var title: String
     var start: Date
-    var end: Date
+    var end: Date    
 }
-
-extension Date: Decodable {}
