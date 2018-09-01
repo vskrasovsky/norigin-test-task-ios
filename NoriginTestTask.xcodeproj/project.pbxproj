@@ -35,6 +35,7 @@
 		CE92FD2C213ABC8A00FB7FE7 /* DaysListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD2B213ABC8A00FB7FE7 /* DaysListView.swift */; };
 		CE92FD2E213ABDF800FB7FE7 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD2D213ABDF800FB7FE7 /* DayCell.swift */; };
 		CE92FD30213ABFBE00FB7FE7 /* DayCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD2F213ABFBE00FB7FE7 /* DayCellViewModel.swift */; };
+		CE92FD32213AD54800FB7FE7 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE92FD31213AD54800FB7FE7 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		CE92FD2B213ABC8A00FB7FE7 /* DaysListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysListView.swift; sourceTree = "<group>"; };
 		CE92FD2D213ABDF800FB7FE7 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		CE92FD2F213ABFBE00FB7FE7 /* DayCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCellViewModel.swift; sourceTree = "<group>"; };
+		CE92FD31213AD54800FB7FE7 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				CE536DB62135797D00A1F7F1 /* AppDelegate.swift */,
 				CE536DBA2135797D00A1F7F1 /* Main.storyboard */,
 				CE536DBD2135797D00A1F7F1 /* Assets.xcassets */,
+				CE92FD31213AD54800FB7FE7 /* Colors.xcassets */,
 				CE536DBF2135797D00A1F7F1 /* LaunchScreen.storyboard */,
 				CE536DC22135797D00A1F7F1 /* Info.plist */,
 			);
@@ -278,6 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE92FD32213AD54800FB7FE7 /* Colors.xcassets in Resources */,
 				CE92FD28213AA3B500FB7FE7 /* TimePositionView.xib in Resources */,
 				CE536DC12135797D00A1F7F1 /* LaunchScreen.storyboard in Resources */,
 				CE536DBE2135797D00A1F7F1 /* Assets.xcassets in Resources */,
@@ -509,10 +513,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 756MY5Q7G9;
 				INFOPLIST_FILE = NoriginTestTask/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scnsoft.NoriginTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -528,10 +529,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 756MY5Q7G9;
 				INFOPLIST_FILE = NoriginTestTask/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.scnsoft.NoriginTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

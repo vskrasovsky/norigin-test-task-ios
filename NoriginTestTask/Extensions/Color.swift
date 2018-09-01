@@ -9,17 +9,26 @@
 import UIKit
 
 extension UIColor {
+    static var accent: UIColor {
+        return UIColor(named: "accent")!
+    }
+    static var channelBackground: UIColor {
+        return UIColor(named: "channelBackground")!
+    }
+    static var programActive: UIColor {
+        return UIColor(named: "programActive")!
+    }
+    static var programBackground: UIColor {
+        return UIColor(named: "programBackground")!
+    }
     static var separator: UIColor {
-        return UIColor(red: 78.0/255, green: 78.0/255, blue: 78.0/255, alpha: 1)
+        return UIColor(named: "separator")!
     }
-    
-    static var lightCellbackground: UIColor {
-        return UIColor(red: 57.0/255, green: 57.0/255, blue: 57.0/255, alpha: 1)
+    static var textGrayed: UIColor {
+        return UIColor(named: "textGrayed")!
     }
-    
-    static var darkCellbackground: UIColor {
-        return UIColor(red: 16.0/255, green: 16.0/255, blue: 16.0/255, alpha: 1)
+    static var white: UIColor {
+        return UIColor(named: "white")!
     }
-
 }
 

@@ -173,7 +173,9 @@ extension EPGViewController: UICollectionViewDataSource, UICollectionViewDelegat
             } else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProgramCell", for: indexPath) as! ProgramCell
                 let programViewModel = channels[indexPath.section - 1].schedules[indexPath.item - 1]
-                cell.configure(with: programViewModel)
+                let program = programViewModel.program
+                let active = program.start <= currentDate && currentDate <= program.end
+                cell.configure(with: programViewModel, active: active)
                 return cell
             }
         }

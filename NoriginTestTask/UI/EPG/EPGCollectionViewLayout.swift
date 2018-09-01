@@ -27,7 +27,7 @@ class EPGCollectionViewLayout: UICollectionViewFlowLayout {
     override var collectionViewContentSize: CGSize {
         guard let collectionView = collectionView else { return .zero }
         let contentWidth = delegate.collectionViewContentWidth(collectionView) + channelCellWidth
-        let contentHeight = CGFloat(collectionView.numberOfSections) * sectionHeight
+        let contentHeight = CGFloat(collectionView.numberOfSections - 1) * sectionHeight + hourHeight
         return CGSize(width: contentWidth, height: contentHeight)
     }
 

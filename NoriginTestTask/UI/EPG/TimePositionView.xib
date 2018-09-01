@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +22,7 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gF-DH-HFM">
                             <rect key="frame" x="38.5" y="0.0" width="4" height="34"/>
-                            <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" name="accent"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="0Fs-Cy-cK4"/>
                                 <constraint firstAttribute="width" constant="4" id="ogh-Md-duY"/>
@@ -34,7 +35,7 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Cl-n5-8Vc">
                             <rect key="frame" x="40" y="34" width="1" height="346"/>
-                            <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" name="accent"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="1" id="DPn-N3-Mz7"/>
                             </constraints>
@@ -61,4 +62,9 @@
             <point key="canvasLocation" x="180.5" y="57"/>
         </collectionReusableView>
     </objects>
+    <resources>
+        <namedColor name="accent">
+            <color red="0.88200002908706665" green="0.63499999046325684" blue="0.11400000005960464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
