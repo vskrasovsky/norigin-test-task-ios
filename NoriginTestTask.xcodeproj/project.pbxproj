@@ -26,7 +26,7 @@
 		CE7FDB062139408F00C4844E /* ChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB052139408F00C4844E /* ChannelViewModel.swift */; };
 		CE7FDB08213940AA00C4844E /* ProgramCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB07213940AA00C4844E /* ProgramCellViewModel.swift */; };
 		CE7FDB0A2139460700C4844E /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB092139460700C4844E /* DateFormatter.swift */; };
-		CE7FDB0C213985BF00C4844E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB0B213985BF00C4844E /* Color.swift */; };
+		CE7FDB0C213985BF00C4844E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB0B213985BF00C4844E /* UIColor.swift */; };
 		CE92FD2021398A9700FB7FE7 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD1F21398A9700FB7FE7 /* ChannelCell.swift */; };
 		CE92FD222139F22900FB7FE7 /* HourCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD212139F22900FB7FE7 /* HourCellViewModel.swift */; };
 		CE92FD24213A81BC00FB7FE7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD23213A81BC00FB7FE7 /* Date.swift */; };
@@ -62,7 +62,7 @@
 		CE7FDB052139408F00C4844E /* ChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewModel.swift; sourceTree = "<group>"; };
 		CE7FDB07213940AA00C4844E /* ProgramCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCellViewModel.swift; sourceTree = "<group>"; };
 		CE7FDB092139460700C4844E /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
-		CE7FDB0B213985BF00C4844E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		CE7FDB0B213985BF00C4844E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CE92FD1F21398A9700FB7FE7 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		CE92FD212139F22900FB7FE7 /* HourCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCellViewModel.swift; sourceTree = "<group>"; };
 		CE92FD23213A81BC00FB7FE7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 			children = (
 				CE7FDB092139460700C4844E /* DateFormatter.swift */,
 				CE92FD23213A81BC00FB7FE7 /* Date.swift */,
-				CE7FDB0B213985BF00C4844E /* Color.swift */,
+				CE7FDB0B213985BF00C4844E /* UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -349,7 +349,7 @@
 				CE536DDF21369CB400A1F7F1 /* EPG.swift in Sources */,
 				CE536DDD21369B0100A1F7F1 /* Channel.swift in Sources */,
 				CE7FDAE1213938EA00C4844E /* ProgramCell.swift in Sources */,
-				CE7FDB0C213985BF00C4844E /* Color.swift in Sources */,
+				CE7FDB0C213985BF00C4844E /* UIColor.swift in Sources */,
 				CE536DD22135BC8300A1F7F1 /* RequestConfig.swift in Sources */,
 				CE7FDB042139406400C4844E /* EPGViewModel.swift in Sources */,
 				CE92FD2C213ABC8A00FB7FE7 /* DaysListView.swift in Sources */,
@@ -513,7 +513,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 756MY5Q7G9;
 				INFOPLIST_FILE = NoriginTestTask/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scnsoft.NoriginTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -529,7 +532,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 756MY5Q7G9;
 				INFOPLIST_FILE = NoriginTestTask/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scnsoft.NoriginTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

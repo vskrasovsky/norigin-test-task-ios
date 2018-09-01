@@ -67,6 +67,7 @@ class EPGViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.titleView = UIImageView(image: UIImage(named: "noriginLogo"))
         firstly {
             epgRESTService.epg()
         }.map(EPGViewModel.init)

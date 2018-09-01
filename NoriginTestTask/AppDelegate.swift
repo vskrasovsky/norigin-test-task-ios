@@ -14,8 +14,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        setUpAppearance()
         return true
+    }
+
+    func setUpAppearance() {
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().barTintColor = .blue
+        
+        UINavigationBar.appearance().tintColor = .barTint
+
+//        UITabBar.appearance().tintColor = .defaultTintColor
+//        UITextField.appearance().tintColor = .black
+//        UISwitch.appearance().onTintColor = .richElectricBlue
+//        
+//        UIApplication.shared.statusBarStyle = .lightContent
     }
 
 }

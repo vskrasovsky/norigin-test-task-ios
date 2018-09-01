@@ -15,6 +15,9 @@ extension UIColor {
     static var channelBackground: UIColor {
         return UIColor(named: "channelBackground")!
     }
+    static var navigationBackground: UIColor {
+        return UIColor(named: "navigationBackground")!
+    }
     static var programActive: UIColor {
         return UIColor(named: "programActive")!
     }
@@ -27,7 +30,7 @@ extension UIColor {
     static var textGrayed: UIColor {
         return UIColor(named: "textGrayed")!
     }
-    static var white: UIColor {
+    static var barTint: UIColor {
         return UIColor(named: "white")!
     }
 }
