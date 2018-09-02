@@ -9,7 +9,7 @@
 import Foundation
 import PromiseKit
 
-class EPGRESTService: WebService {
+class EPGRESTService: WebService, EPGService {
     func epg() -> Promise<EPG> {
         return load(config: EPGRequestConfig.epg)
     }    

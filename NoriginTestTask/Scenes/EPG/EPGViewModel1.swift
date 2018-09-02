@@ -9,5 +9,9 @@
 import Foundation
 
 class EPGViewModel1 {
+    private let epgService: EPGService
     
+    init(epgService: EPGService) {
+        self.epgService = epgService
+    }
 }

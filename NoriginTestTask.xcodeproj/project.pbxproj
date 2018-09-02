@@ -12,6 +12,7 @@
 		CE17031B213C8673003AF8B7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17031A213C8673003AF8B7 /* AppCoordinator.swift */; };
 		CE17031D213C8A8F003AF8B7 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17031C213C8A8F003AF8B7 /* UIStoryboard.swift */; };
 		CE17031F213C8ADA003AF8B7 /* EPGViewModel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17031E213C8ADA003AF8B7 /* EPGViewModel1.swift */; };
+		CE170321213C9216003AF8B7 /* EPGService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE170320213C9216003AF8B7 /* EPGService.swift */; };
 		CE536DB72135797D00A1F7F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DB62135797D00A1F7F1 /* AppDelegate.swift */; };
 		CE536DB92135797D00A1F7F1 /* EPGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DB82135797D00A1F7F1 /* EPGViewController.swift */; };
 		CE536DBC2135797D00A1F7F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE536DBA2135797D00A1F7F1 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		CE17031A213C8673003AF8B7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		CE17031C213C8A8F003AF8B7 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		CE17031E213C8ADA003AF8B7 /* EPGViewModel1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGViewModel1.swift; sourceTree = "<group>"; };
+		CE170320213C9216003AF8B7 /* EPGService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGService.swift; sourceTree = "<group>"; };
 		CE536DB32135797D00A1F7F1 /* NoriginTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoriginTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE536DB62135797D00A1F7F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE536DB82135797D00A1F7F1 /* EPGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				CE536DCE2135BB7500A1F7F1 /* Network */,
+				CE170320213C9216003AF8B7 /* EPGService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				CE536DDD21369B0100A1F7F1 /* Channel.swift in Sources */,
 				CE7FDAE1213938EA00C4844E /* ProgramCell.swift in Sources */,
 				CE7FDB0C213985BF00C4844E /* UIColor.swift in Sources */,
+				CE170321213C9216003AF8B7 /* EPGService.swift in Sources */,
 				CE536DD22135BC8300A1F7F1 /* RequestConfig.swift in Sources */,
 				CE7FDB042139406400C4844E /* EPGViewModel.swift in Sources */,
 				CE92FD2C213ABC8A00FB7FE7 /* DaysListView.swift in Sources */,
