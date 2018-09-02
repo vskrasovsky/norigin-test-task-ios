@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		34587567C877D89CF9F2F6DE /* Pods_NoriginTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E012EA9419BC07F8211D44 /* Pods_NoriginTestTask.framework */; };
+		CE170316213BD948003AF8B7 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE170315213BD948003AF8B7 /* Math.swift */; };
 		CE536DB72135797D00A1F7F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DB62135797D00A1F7F1 /* AppDelegate.swift */; };
 		CE536DB92135797D00A1F7F1 /* EPGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DB82135797D00A1F7F1 /* EPGViewController.swift */; };
 		CE536DBC2135797D00A1F7F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE536DBA2135797D00A1F7F1 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 		34E012EA9419BC07F8211D44 /* Pods_NoriginTestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoriginTestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		501EE334FF93E745E32D6BCD /* Pods-NoriginTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoriginTestTask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoriginTestTask/Pods-NoriginTestTask.debug.xcconfig"; sourceTree = "<group>"; };
 		B7E419F44C011B0466E3422A /* Pods-NoriginTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoriginTestTask.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoriginTestTask/Pods-NoriginTestTask.release.xcconfig"; sourceTree = "<group>"; };
+		CE170315213BD948003AF8B7 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		CE536DB32135797D00A1F7F1 /* NoriginTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoriginTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE536DB62135797D00A1F7F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE536DB82135797D00A1F7F1 /* EPGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			children = (
 				CE7FDB092139460700C4844E /* DateFormatter.swift */,
 				CE92FD23213A81BC00FB7FE7 /* Date.swift */,
+				CE170315213BD948003AF8B7 /* Math.swift */,
 				CE7FDB0B213985BF00C4844E /* UIColor.swift */,
 			);
 			path = Extensions;
@@ -366,6 +369,7 @@
 				CE536DD62135D00200A1F7F1 /* WebService.swift in Sources */,
 				CE536DD02135BC7800A1F7F1 /* WebLoader.swift in Sources */,
 				CE92FD30213ABFBE00FB7FE7 /* DayCellViewModel.swift in Sources */,
+				CE170316213BD948003AF8B7 /* Math.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
