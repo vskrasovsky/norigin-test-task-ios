@@ -34,7 +34,7 @@ extension UIColor {
         return UIColor(named: "textGrayed")!
     }
     static var barTint: UIColor {
-        return UIColor(named: "white")!
+        return .white
     }
 }
 
