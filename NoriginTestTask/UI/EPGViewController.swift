@@ -13,6 +13,14 @@ let timePositionKind = "TimePositionView"
 
 class EPGViewController: UIViewController {
 
+    @IBOutlet weak var favouriteView: UIView! {
+        didSet {
+            favouriteView.layer.shadowOffset = .zero
+            favouriteView.layer.shadowRadius = 6
+            favouriteView.layer.shadowOpacity = 1.0
+        }
+    }
+    
     @IBOutlet weak var daysListView: DaysListView! {
         didSet {
             daysListView.delegate = self
