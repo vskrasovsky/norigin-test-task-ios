@@ -72,8 +72,13 @@ class EPGViewController: UIViewController {
             epgRESTService.epg()
         }.map(EPGViewModel.init)
         .done { [weak self] epgViewModel in
-            self?.epgViewModel = epgViewModel
-            self?.days = epgViewModel.days
+            guard let strongSelf = self else { return }
+            strongSelf.epgViewModel = epgViewModel
+            var days = epgViewModel.days
+            if !days.isEmpty {
+                days[0].selected = true
+            }
+            strongSelf.days = days
         }.catch { error in
             print(error.localizedDescription)
         }
@@ -92,8 +97,13 @@ class EPGViewController: UIViewController {
         guard let epg = epgViewModel else { return }
         let ratio = (currentDate.timeIntervalSince1970 - epg.startInterval) / epg.duration
         // FIX ME:
-        let offset =  CGFloat(ratio * Double(contentWidth)) - (collectionView.bounds.width - 75) / 2
+        var offset =  CGFloat(ratio * Double(contentWidth)) - (collectionView.bounds.width - 75) / 2
+        offset = clip(value: offset, toRange: 0 ..< maxContentOffset())
         collectionView.setContentOffset(CGPoint(x: offset, y: currentContentOffset.y), animated: true)
+    }
+    
+    private func maxContentOffset() -> CGFloat {
+        return contentWidth + 75 - collectionView.bounds.width
     }
 }
 
@@ -103,7 +113,8 @@ extension EPGViewController: DaysListViewDelegate {
         let ratio = (max(epg.startInterval, date.timeIntervalSince1970) - epg.startInterval) / epg.duration
         let currentContentOffset = collectionView.contentOffset
         // FIX ME:
-        let offset =  CGFloat(ratio * Double(contentWidth))
+        var offset =  CGFloat(ratio * Double(contentWidth))
+        offset = clip(value: offset, toRange: 0 ..< maxContentOffset())
         collectionView.setContentOffset(CGPoint(x: offset, y: currentContentOffset.y), animated: true)
     }
 }
@@ -180,5 +191,19 @@ extension EPGViewController: UICollectionViewDataSource, UICollectionViewDelegat
                 return cell
             }
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //FIX ME: optimize this method
+        guard let epg = epgViewModel else { return }
+        let ratio = (scrollView.contentOffset.x + (collectionView.bounds.width - 75) / 2) / contentWidth
+        let interval = Double(ratio) * epg.duration + epg.startInterval
+        let day = Date(timeIntervalSince1970: interval).startOfDay()
+        let days = self.days.map { viewModel -> DayCellViewModel in
+            var newViewModel = viewModel
+            newViewModel.selected = viewModel.date == day
+            return newViewModel
+        }
+        self.days = days
     }
 }

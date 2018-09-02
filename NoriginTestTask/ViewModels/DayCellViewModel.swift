@@ -12,4 +12,5 @@ struct DayCellViewModel {
     var date: Date
     var dayOfWeekStr: String
     var dateStr: String
+    var selected: Bool
 }

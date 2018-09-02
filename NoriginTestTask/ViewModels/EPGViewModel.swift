@@ -62,7 +62,7 @@ struct EPGViewModel {
         while day <= endDay {
             let dayOfWeekStr = DateFormatter.dayOfWeekFormatter.string(from: day)
             let dateStr = DateFormatter.dayMonthDateFormatter.string(from: day)
-            dayCellViewModels.append(DayCellViewModel(date: day, dayOfWeekStr: dayOfWeekStr, dateStr: dateStr))
+            dayCellViewModels.append(DayCellViewModel(date: day, dayOfWeekStr: dayOfWeekStr, dateStr: dateStr, selected: false))
             day = day.dayLater()
         }
         self.days = dayCellViewModels

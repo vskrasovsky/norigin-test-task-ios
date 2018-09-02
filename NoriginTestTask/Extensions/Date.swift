@@ -65,15 +65,10 @@ extension Date {
     func dayLater() -> Date {
         return Calendar.current.date(byAdding: .day, value: 1, to: self) ?? self
     }
+    func daysLater(count: Int = 1) -> Date {
+        return Calendar.current.date(byAdding: .day, value: count, to: self) ?? self
+    }
 
-    
-    func startOfHour() -> Date {
-        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour], from: self)
-        return Calendar.current.date(from: dateComponents) ?? self
-    }
-    func endOfHour() -> Date {
-        return Calendar.current.date(byAdding: .hour, value: 1, to: startOfHour()) ?? self
-    }
     func hourLater() -> Date {
         return Calendar.current.date(byAdding: .hour, value: 1, to: self) ?? self
     }

@@ -13,7 +13,14 @@ class DayCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     
     func configure(with viewModel: DayCellViewModel) {
-        dayOfWeekLabel.text = viewModel.dayOfWeekStr
-        dateLabel.text = viewModel.dateStr
+        //Seems like a bug, but changing textColor out of async block have no effect
+        DispatchQueue.main.async {
+            let textColor: UIColor = viewModel.selected ? .white : .textGrayed
+            self.dayOfWeekLabel.textColor = textColor
+            self.dateLabel.textColor = textColor
+            self.dayOfWeekLabel.text = viewModel.dayOfWeekStr
+            self.dateLabel.text = viewModel.dateStr
+
+        }
     }
 }
