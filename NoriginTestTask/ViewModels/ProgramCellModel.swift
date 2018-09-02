@@ -1,5 +1,5 @@
 //
-//  ProgramCellViewModel.swift
+//  ProgramCellModel.swift
 //  NoriginTestTask
 //
 //  Created by user on 8/31/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ProgramCellViewModel {
+struct ProgramCellModel {
     var startRatio: Double
     var endRatio: Double
     var program: Program

@@ -12,15 +12,15 @@ class DayCell: UICollectionViewCell {
     @IBOutlet weak var dayOfWeekLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    func configure(with viewModel: DayCellViewModel) {
-        //Seems like a bug, but changing textColor out of async block have no effect
-        DispatchQueue.main.async {
-            let textColor: UIColor = viewModel.selected ? .white : .textGrayed
-            self.dayOfWeekLabel.textColor = textColor
-            self.dateLabel.textColor = textColor
-            self.dayOfWeekLabel.text = viewModel.dayOfWeekStr
-            self.dateLabel.text = viewModel.dateStr
-
-        }
+    // to avoid blinking of old content while cell reusing
+    override func prepareForReuse() {
+        dayOfWeekLabel.text = ""
+        dateLabel.text = ""
+    }
+    
+    func configure(with viewModel: DayCellModel) {
+        isSelected = viewModel.selected
+        dayOfWeekLabel.text = viewModel.dayOfWeekStr
+        dateLabel.text = viewModel.dateStr
     }
 }

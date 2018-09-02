@@ -46,16 +46,10 @@ class EPGViewController: UIViewController {
         }
     }
     
-    var hours: [HourCellViewModel] {
+    var hours: [HourCellModel] {
         return epgViewModel?.hours ?? []
     }
     
-    var days: [DayCellViewModel] = [] {
-        didSet {
-            daysListView.days = days
-        }
-    }
-
     var channels: [ChannelViewModel] {
         return epgViewModel?.channels ?? []
     }
@@ -80,13 +74,11 @@ class EPGViewController: UIViewController {
             epgRESTService.epg()
         }.map(EPGViewModel.init)
         .done { [weak self] epgViewModel in
-            guard let strongSelf = self else { return }
-            strongSelf.epgViewModel = epgViewModel
-            var days = epgViewModel.days
-            if !days.isEmpty {
-                days[0].selected = true
-            }
-            strongSelf.days = days
+            self?.epgViewModel = epgViewModel
+            let days = epgViewModel.days
+            self?.daysListView.days = days
+            self?.daysListView.selectedDay = days.first
+
         }.catch { error in
             print(error.localizedDescription)
         }
@@ -202,16 +194,13 @@ extension EPGViewController: UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //handle only user dragging, not programmatically scrolling
+        guard scrollView.isDragging else { return }
         //FIX ME: optimize this method
         guard let epg = epgViewModel else { return }
         let ratio = (scrollView.contentOffset.x + (collectionView.bounds.width - 75) / 2) / contentWidth
         let interval = Double(ratio) * epg.duration + epg.startInterval
         let day = Date(timeIntervalSince1970: interval).startOfDay()
-        let days = self.days.map { viewModel -> DayCellViewModel in
-            var newViewModel = viewModel
-            newViewModel.selected = viewModel.date == day
-            return newViewModel
-        }
-        self.days = days
+        daysListView.selectedDay = day
     }
 }

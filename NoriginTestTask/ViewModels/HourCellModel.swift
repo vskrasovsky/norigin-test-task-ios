@@ -1,5 +1,5 @@
 //
-//  HourCellViewModel.swift
+//  HourCellModel.swift
 //  NoriginTestTask
 //
 //  Created by user on 9/1/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct HourCellViewModel {
+struct HourCellModel {
     var startRatio: Double
     var endRatio: Double
     var title: String

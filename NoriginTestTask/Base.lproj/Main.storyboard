@@ -49,13 +49,13 @@
                                                                             <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" name="textGrayed"/>
-                                                                            <nil key="highlightedColor"/>
+                                                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g14-r3-YUj">
                                                                             <rect key="frame" x="0.0" y="20.5" width="42" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" name="textGrayed"/>
-                                                                            <nil key="highlightedColor"/>
+                                                                            <color key="highlightedColor" name="white"/>
                                                                         </label>
                                                                     </subviews>
                                                                 </stackView>

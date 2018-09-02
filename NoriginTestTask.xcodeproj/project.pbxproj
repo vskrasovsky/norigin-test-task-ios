@@ -25,17 +25,17 @@
 		CE7FDAE1213938EA00C4844E /* ProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDAE0213938EA00C4844E /* ProgramCell.swift */; };
 		CE7FDB042139406400C4844E /* EPGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB032139406400C4844E /* EPGViewModel.swift */; };
 		CE7FDB062139408F00C4844E /* ChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB052139408F00C4844E /* ChannelViewModel.swift */; };
-		CE7FDB08213940AA00C4844E /* ProgramCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB07213940AA00C4844E /* ProgramCellViewModel.swift */; };
+		CE7FDB08213940AA00C4844E /* ProgramCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB07213940AA00C4844E /* ProgramCellModel.swift */; };
 		CE7FDB0A2139460700C4844E /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB092139460700C4844E /* DateFormatter.swift */; };
 		CE7FDB0C213985BF00C4844E /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB0B213985BF00C4844E /* UIColor.swift */; };
 		CE92FD2021398A9700FB7FE7 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD1F21398A9700FB7FE7 /* ChannelCell.swift */; };
-		CE92FD222139F22900FB7FE7 /* HourCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD212139F22900FB7FE7 /* HourCellViewModel.swift */; };
+		CE92FD222139F22900FB7FE7 /* HourCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD212139F22900FB7FE7 /* HourCellModel.swift */; };
 		CE92FD24213A81BC00FB7FE7 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD23213A81BC00FB7FE7 /* Date.swift */; };
 		CE92FD26213A893800FB7FE7 /* HourCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD25213A893800FB7FE7 /* HourCell.swift */; };
 		CE92FD28213AA3B500FB7FE7 /* TimePositionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE92FD27213AA3B500FB7FE7 /* TimePositionView.xib */; };
 		CE92FD2C213ABC8A00FB7FE7 /* DaysListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD2B213ABC8A00FB7FE7 /* DaysListView.swift */; };
 		CE92FD2E213ABDF800FB7FE7 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD2D213ABDF800FB7FE7 /* DayCell.swift */; };
-		CE92FD30213ABFBE00FB7FE7 /* DayCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD2F213ABFBE00FB7FE7 /* DayCellViewModel.swift */; };
+		CE92FD30213ABFBE00FB7FE7 /* DayCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92FD2F213ABFBE00FB7FE7 /* DayCellModel.swift */; };
 		CE92FD32213AD54800FB7FE7 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE92FD31213AD54800FB7FE7 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -62,17 +62,17 @@
 		CE7FDAE0213938EA00C4844E /* ProgramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCell.swift; sourceTree = "<group>"; };
 		CE7FDB032139406400C4844E /* EPGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGViewModel.swift; sourceTree = "<group>"; };
 		CE7FDB052139408F00C4844E /* ChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewModel.swift; sourceTree = "<group>"; };
-		CE7FDB07213940AA00C4844E /* ProgramCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCellViewModel.swift; sourceTree = "<group>"; };
+		CE7FDB07213940AA00C4844E /* ProgramCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCellModel.swift; sourceTree = "<group>"; };
 		CE7FDB092139460700C4844E /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		CE7FDB0B213985BF00C4844E /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CE92FD1F21398A9700FB7FE7 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
-		CE92FD212139F22900FB7FE7 /* HourCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCellViewModel.swift; sourceTree = "<group>"; };
+		CE92FD212139F22900FB7FE7 /* HourCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCellModel.swift; sourceTree = "<group>"; };
 		CE92FD23213A81BC00FB7FE7 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		CE92FD25213A893800FB7FE7 /* HourCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCell.swift; sourceTree = "<group>"; };
 		CE92FD27213AA3B500FB7FE7 /* TimePositionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimePositionView.xib; sourceTree = "<group>"; };
 		CE92FD2B213ABC8A00FB7FE7 /* DaysListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysListView.swift; sourceTree = "<group>"; };
 		CE92FD2D213ABDF800FB7FE7 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
-		CE92FD2F213ABFBE00FB7FE7 /* DayCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCellViewModel.swift; sourceTree = "<group>"; };
+		CE92FD2F213ABFBE00FB7FE7 /* DayCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCellModel.swift; sourceTree = "<group>"; };
 		CE92FD31213AD54800FB7FE7 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -188,9 +188,9 @@
 			children = (
 				CE7FDB032139406400C4844E /* EPGViewModel.swift */,
 				CE7FDB052139408F00C4844E /* ChannelViewModel.swift */,
-				CE7FDB07213940AA00C4844E /* ProgramCellViewModel.swift */,
-				CE92FD212139F22900FB7FE7 /* HourCellViewModel.swift */,
-				CE92FD2F213ABFBE00FB7FE7 /* DayCellViewModel.swift */,
+				CE7FDB07213940AA00C4844E /* ProgramCellModel.swift */,
+				CE92FD212139F22900FB7FE7 /* HourCellModel.swift */,
+				CE92FD2F213ABFBE00FB7FE7 /* DayCellModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -346,7 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE92FD222139F22900FB7FE7 /* HourCellViewModel.swift in Sources */,
+				CE92FD222139F22900FB7FE7 /* HourCellModel.swift in Sources */,
 				CE536DB92135797D00A1F7F1 /* EPGViewController.swift in Sources */,
 				CE7FDB062139408F00C4844E /* ChannelViewModel.swift in Sources */,
 				CE536DDF21369CB400A1F7F1 /* EPG.swift in Sources */,
@@ -357,7 +357,7 @@
 				CE7FDB042139406400C4844E /* EPGViewModel.swift in Sources */,
 				CE92FD2C213ABC8A00FB7FE7 /* DaysListView.swift in Sources */,
 				CE92FD2E213ABDF800FB7FE7 /* DayCell.swift in Sources */,
-				CE7FDB08213940AA00C4844E /* ProgramCellViewModel.swift in Sources */,
+				CE7FDB08213940AA00C4844E /* ProgramCellModel.swift in Sources */,
 				CE536DD82136857100A1F7F1 /* Program.swift in Sources */,
 				CE7FDB0A2139460700C4844E /* DateFormatter.swift in Sources */,
 				CE536DDB213699CF00A1F7F1 /* EPGRESTService.swift in Sources */,
@@ -368,7 +368,7 @@
 				CE92FD24213A81BC00FB7FE7 /* Date.swift in Sources */,
 				CE536DD62135D00200A1F7F1 /* WebService.swift in Sources */,
 				CE536DD02135BC7800A1F7F1 /* WebLoader.swift in Sources */,
-				CE92FD30213ABFBE00FB7FE7 /* DayCellViewModel.swift in Sources */,
+				CE92FD30213ABFBE00FB7FE7 /* DayCellModel.swift in Sources */,
 				CE170316213BD948003AF8B7 /* Math.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

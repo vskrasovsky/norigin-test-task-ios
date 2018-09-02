@@ -9,8 +9,8 @@
 import Foundation
 
 struct EPGViewModel {
-    let hours: [HourCellViewModel]
-    let days: [DayCellViewModel]
+    let hours: [HourCellModel]
+    let days: [Date]
     let channels: [ChannelViewModel]
     let startInterval: TimeInterval
     let endInterval: TimeInterval
@@ -35,7 +35,7 @@ struct EPGViewModel {
         let duration = endInterval - startInterval
         channels = epg.channels.map({ channel -> ChannelViewModel in
             let schedules = channel.schedules.map({ p in
-                return ProgramCellViewModel(
+                return ProgramCellModel(
                     startRatio: (p.start.timeIntervalSince1970 - start.timeIntervalSince1970) / duration,
                     endRatio: (p.end.timeIntervalSince1970 - start.timeIntervalSince1970) / duration, program: p
                 )
@@ -45,27 +45,25 @@ struct EPGViewModel {
         
         var hour = start.nearestEarlierHalfAnHour()
         let endHour = end.nearestLaterHalfAnHour()
-        var hourCellViewModels = [HourCellViewModel]()
+        var hourViewModels = [HourCellModel]()
         while hour < endHour {
             let startRatio = (hour.timeIntervalSince1970 - start.timeIntervalSince1970) / duration
             let title = DateFormatter.timeFormatter.string(from: hour.halfAnHourLater())
             let hourLater = hour.hourLater()
             let endRatio = (hourLater.timeIntervalSince1970 - start.timeIntervalSince1970) / duration
-            hourCellViewModels.append(HourCellViewModel(startRatio: startRatio, endRatio: endRatio, title: title))
+            hourViewModels.append(HourCellModel(startRatio: startRatio, endRatio: endRatio, title: title))
             hour = hourLater
         }
-        self.hours = hourCellViewModels
+        self.hours = hourViewModels
         
         var day = start.startOfDay()
         let endDay = end.startOfDay()
-        var dayCellViewModels = [DayCellViewModel]()
+        var days = [Date]()
         while day <= endDay {
-            let dayOfWeekStr = DateFormatter.dayOfWeekFormatter.string(from: day)
-            let dateStr = DateFormatter.dayMonthDateFormatter.string(from: day)
-            dayCellViewModels.append(DayCellViewModel(date: day, dayOfWeekStr: dayOfWeekStr, dateStr: dateStr, selected: false))
+            days.append(day)
             day = day.dayLater()
         }
-        self.days = dayCellViewModels
+        self.days = days
 
     }
 }

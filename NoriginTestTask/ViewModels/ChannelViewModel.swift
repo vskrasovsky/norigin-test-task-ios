@@ -10,5 +10,5 @@ import Foundation
 
 struct ChannelViewModel {
     var logoURL: String
-    var schedules: [ProgramCellViewModel]
+    var schedules: [ProgramCellModel]
 }
