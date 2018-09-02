@@ -13,6 +13,10 @@ let timePositionKind = "TimePositionView"
 
 class EPGViewController: UIViewController {
 
+    @IBOutlet weak var loadingView: UIView!
+
+    @IBOutlet weak var contentView: UIView!
+
     @IBOutlet weak var favouriteView: UIView! {
         didSet {
             favouriteView.layer.shadowOffset = .zero
@@ -38,6 +42,7 @@ class EPGViewController: UIViewController {
         }
     }
     
+    var viewModel: EPGViewModel1!
     let epgRESTService = EPGRESTService(loader: TRONWebLoader())
 
     var epgViewModel: EPGViewModel? {
@@ -70,8 +75,10 @@ class EPGViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.titleView = UIImageView(image: UIImage(named: "noriginLogo"))
-        firstly {
-            epgRESTService.epg()
+        firstly { () -> Promise<EPG> in
+            loadingView.isHidden = false
+            contentView.isHidden = true
+            return epgRESTService.epg()
         }.map(EPGViewModel.init)
         .done { [weak self] epgViewModel in
             self?.epgViewModel = epgViewModel
@@ -79,6 +86,9 @@ class EPGViewController: UIViewController {
             self?.daysListView.days = days
             self?.daysListView.selectedDay = days.first
 
+        }.ensure { [weak self] in
+            self?.contentView.isHidden = false
+            self?.loadingView.isHidden = true
         }.catch { error in
             print(error.localizedDescription)
         }

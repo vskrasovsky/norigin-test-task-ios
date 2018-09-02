@@ -14,9 +14,9 @@ protocol DaysListViewDelegate: class {
 
 class DaysListView: UIView {
 
-    weak var delegate: DaysListViewDelegate?
-
     @IBOutlet weak var collectionView: UICollectionView!
+
+    weak var delegate: DaysListViewDelegate?
     
     var days: [Date] = [] {
         didSet {
@@ -26,7 +26,6 @@ class DaysListView: UIView {
     var selectedDay: Date? {
         didSet {
             if selectedDay != oldValue {
-//                print(oldValue, selectedDay)
                 updateDayModels()
             }
         }

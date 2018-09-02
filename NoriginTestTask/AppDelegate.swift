@@ -12,9 +12,16 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    fileprivate var appCoordinator: AppCoordinator!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setUpAppearance()
+        
+        window = UIWindow()
+        appCoordinator = AppCoordinator(window: window!)
+        appCoordinator.start()
+        window?.makeKeyAndVisible()
+        
         return true
     }
 

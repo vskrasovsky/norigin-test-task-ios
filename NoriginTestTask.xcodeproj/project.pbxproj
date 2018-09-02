@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		34587567C877D89CF9F2F6DE /* Pods_NoriginTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E012EA9419BC07F8211D44 /* Pods_NoriginTestTask.framework */; };
 		CE170316213BD948003AF8B7 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE170315213BD948003AF8B7 /* Math.swift */; };
+		CE17031B213C8673003AF8B7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17031A213C8673003AF8B7 /* AppCoordinator.swift */; };
+		CE17031D213C8A8F003AF8B7 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17031C213C8A8F003AF8B7 /* UIStoryboard.swift */; };
+		CE17031F213C8ADA003AF8B7 /* EPGViewModel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17031E213C8ADA003AF8B7 /* EPGViewModel1.swift */; };
 		CE536DB72135797D00A1F7F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DB62135797D00A1F7F1 /* AppDelegate.swift */; };
 		CE536DB92135797D00A1F7F1 /* EPGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DB82135797D00A1F7F1 /* EPGViewController.swift */; };
 		CE536DBC2135797D00A1F7F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE536DBA2135797D00A1F7F1 /* Main.storyboard */; };
@@ -44,6 +47,9 @@
 		501EE334FF93E745E32D6BCD /* Pods-NoriginTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoriginTestTask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoriginTestTask/Pods-NoriginTestTask.debug.xcconfig"; sourceTree = "<group>"; };
 		B7E419F44C011B0466E3422A /* Pods-NoriginTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoriginTestTask.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoriginTestTask/Pods-NoriginTestTask.release.xcconfig"; sourceTree = "<group>"; };
 		CE170315213BD948003AF8B7 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		CE17031A213C8673003AF8B7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		CE17031C213C8A8F003AF8B7 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
+		CE17031E213C8ADA003AF8B7 /* EPGViewModel1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGViewModel1.swift; sourceTree = "<group>"; };
 		CE536DB32135797D00A1F7F1 /* NoriginTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoriginTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE536DB62135797D00A1F7F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE536DB82135797D00A1F7F1 /* EPGViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +103,26 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CE170318213C8581003AF8B7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE170319213C85F9003AF8B7 /* Stroryboards */,
+				CE536DBD2135797D00A1F7F1 /* Assets.xcassets */,
+				CE92FD31213AD54800FB7FE7 /* Colors.xcassets */,
+				CE536DC22135797D00A1F7F1 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CE170319213C85F9003AF8B7 /* Stroryboards */ = {
+			isa = PBXGroup;
+			children = (
+				CE536DBA2135797D00A1F7F1 /* Main.storyboard */,
+				CE536DBF2135797D00A1F7F1 /* LaunchScreen.storyboard */,
+			);
+			path = Stroryboards;
+			sourceTree = "<group>";
+		};
 		CE536DAA2135797D00A1F7F1 = {
 			isa = PBXGroup;
 			children = (
@@ -118,17 +144,13 @@
 		CE536DB52135797D00A1F7F1 /* NoriginTestTask */ = {
 			isa = PBXGroup;
 			children = (
+				CE536DB62135797D00A1F7F1 /* AppDelegate.swift */,
+				CE17031A213C8673003AF8B7 /* AppCoordinator.swift */,
 				CE536DCA21358D5F00A1F7F1 /* Models */,
 				CE536DCB21358DD000A1F7F1 /* Services */,
-				CE536DCC21358DD500A1F7F1 /* UI */,
-				CE7FDB022139404800C4844E /* ViewModels */,
+				CE536DCC21358DD500A1F7F1 /* Scenes */,
 				CE536DD92136997100A1F7F1 /* Extensions */,
-				CE536DB62135797D00A1F7F1 /* AppDelegate.swift */,
-				CE536DBA2135797D00A1F7F1 /* Main.storyboard */,
-				CE536DBD2135797D00A1F7F1 /* Assets.xcassets */,
-				CE92FD31213AD54800FB7FE7 /* Colors.xcassets */,
-				CE536DBF2135797D00A1F7F1 /* LaunchScreen.storyboard */,
-				CE536DC22135797D00A1F7F1 /* Info.plist */,
+				CE170318213C8581003AF8B7 /* Resources */,
 			);
 			path = NoriginTestTask;
 			sourceTree = "<group>";
@@ -151,14 +173,12 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		CE536DCC21358DD500A1F7F1 /* UI */ = {
+		CE536DCC21358DD500A1F7F1 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				CE536DB82135797D00A1F7F1 /* EPGViewController.swift */,
-				CE92FD2A213ABC5500FB7FE7 /* DaysList */,
 				CE92FD29213ABC4400FB7FE7 /* EPG */,
 			);
-			path = UI;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		CE536DCE2135BB7500A1F7F1 /* Network */ = {
@@ -176,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				CE7FDB092139460700C4844E /* DateFormatter.swift */,
+				CE17031C213C8A8F003AF8B7 /* UIStoryboard.swift */,
 				CE92FD23213A81BC00FB7FE7 /* Date.swift */,
 				CE170315213BD948003AF8B7 /* Math.swift */,
 				CE7FDB0B213985BF00C4844E /* UIColor.swift */,
@@ -183,21 +204,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		CE7FDB022139404800C4844E /* ViewModels */ = {
+		CE92FD29213ABC4400FB7FE7 /* EPG */ = {
 			isa = PBXGroup;
 			children = (
+				CE92FD2A213ABC5500FB7FE7 /* DaysList */,
+				CE536DB82135797D00A1F7F1 /* EPGViewController.swift */,
+				CE17031E213C8ADA003AF8B7 /* EPGViewModel1.swift */,
 				CE7FDB032139406400C4844E /* EPGViewModel.swift */,
 				CE7FDB052139408F00C4844E /* ChannelViewModel.swift */,
 				CE7FDB07213940AA00C4844E /* ProgramCellModel.swift */,
 				CE92FD212139F22900FB7FE7 /* HourCellModel.swift */,
 				CE92FD2F213ABFBE00FB7FE7 /* DayCellModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		CE92FD29213ABC4400FB7FE7 /* EPG */ = {
-			isa = PBXGroup;
-			children = (
 				CE7FDADE213836DB00C4844E /* EPGCollectionViewLayout.swift */,
 				CE7FDAE0213938EA00C4844E /* ProgramCell.swift */,
 				CE92FD1F21398A9700FB7FE7 /* ChannelCell.swift */,
@@ -348,6 +365,7 @@
 			files = (
 				CE92FD222139F22900FB7FE7 /* HourCellModel.swift in Sources */,
 				CE536DB92135797D00A1F7F1 /* EPGViewController.swift in Sources */,
+				CE17031B213C8673003AF8B7 /* AppCoordinator.swift in Sources */,
 				CE7FDB062139408F00C4844E /* ChannelViewModel.swift in Sources */,
 				CE536DDF21369CB400A1F7F1 /* EPG.swift in Sources */,
 				CE536DDD21369B0100A1F7F1 /* Channel.swift in Sources */,
@@ -357,7 +375,9 @@
 				CE7FDB042139406400C4844E /* EPGViewModel.swift in Sources */,
 				CE92FD2C213ABC8A00FB7FE7 /* DaysListView.swift in Sources */,
 				CE92FD2E213ABDF800FB7FE7 /* DayCell.swift in Sources */,
+				CE17031D213C8A8F003AF8B7 /* UIStoryboard.swift in Sources */,
 				CE7FDB08213940AA00C4844E /* ProgramCellModel.swift in Sources */,
+				CE17031F213C8ADA003AF8B7 /* EPGViewModel1.swift in Sources */,
 				CE536DD82136857100A1F7F1 /* Program.swift in Sources */,
 				CE7FDB0A2139460700C4844E /* DateFormatter.swift in Sources */,
 				CE536DDB213699CF00A1F7F1 /* EPGRESTService.swift in Sources */,
@@ -516,7 +536,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 756MY5Q7G9;
-				INFOPLIST_FILE = NoriginTestTask/Info.plist;
+				INFOPLIST_FILE = NoriginTestTask/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -535,7 +555,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 756MY5Q7G9;
-				INFOPLIST_FILE = NoriginTestTask/Info.plist;
+				INFOPLIST_FILE = NoriginTestTask/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
