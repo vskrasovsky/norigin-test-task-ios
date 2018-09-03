@@ -8,7 +8,7 @@ DerivedData/
 
 ##npm 
 node_modules/
-package_lock.json
+package-lock.json
 
 ## Various settings
 *.pbxuser
