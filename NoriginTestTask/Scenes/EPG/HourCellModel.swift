@@ -9,7 +9,7 @@
 import Foundation
 
 struct HourCellModel {
-    var startRatio: Double
-    var endRatio: Double
+    var start: TimeInterval
+    var end: TimeInterval
     var title: String
 }

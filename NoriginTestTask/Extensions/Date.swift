@@ -10,6 +10,10 @@ import Foundation
 
 extension Date {
     
+    var timeInterval: TimeInterval {
+        return timeIntervalSince1970
+    }
+    
     // 15:37 -> 15:30, 00:25 -> 23:30
     func nearestEarlierHalfAnHour() -> Date {
         var dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: self)
@@ -71,5 +75,11 @@ extension Date {
 
     func hourLater() -> Date {
         return Calendar.current.date(byAdding: .hour, value: 1, to: self) ?? self
+    }
+}
+
+extension TimeInterval {
+    var date: Date {
+        return Date(timeIntervalSince1970: self)
     }
 }

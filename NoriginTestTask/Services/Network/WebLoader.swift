@@ -17,8 +17,7 @@ protocol WebLoader {
 }
 
 final class TRONWebLoader: WebLoader {
-    let log = false
-    let tron: TRON
+    private let tron: TRON
     
     init() {
         tron = TRON(baseURL: BaseConfig.baseApiPath)
@@ -43,5 +42,4 @@ final class TRONWebLoader: WebLoader {
             })
         }
     }
-    
 }

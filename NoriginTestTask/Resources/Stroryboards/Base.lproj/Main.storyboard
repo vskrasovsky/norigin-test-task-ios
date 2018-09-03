@@ -130,7 +130,6 @@
                                             <constraint firstAttribute="bottom" secondItem="mIO-Ip-CKo" secondAttribute="bottom" id="VBn-Ol-c8D"/>
                                             <constraint firstItem="mIO-Ip-CKo" firstAttribute="leading" secondItem="VK5-7F-AXc" secondAttribute="trailing" id="fGp-Aj-ukU"/>
                                             <constraint firstAttribute="trailing" secondItem="mIO-Ip-CKo" secondAttribute="trailing" id="hQU-fN-fCf"/>
-                                            <constraint firstAttribute="width" constant="375" id="moP-IC-HnR"/>
                                             <constraint firstAttribute="height" constant="63" id="yE1-UR-9gs"/>
                                         </constraints>
                                         <connections>
@@ -139,7 +138,7 @@
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lJH-Fa-48w">
                                         <rect key="frame" x="0.0" y="63" width="375" height="584"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="separator"/>
                                         <collectionViewLayout key="collectionViewLayout" id="h2k-Pa-W6f" customClass="EPGCollectionViewLayout" customModule="NoriginTestTask" customModuleProvider="target"/>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HourCell" id="RgP-6z-qUS" customClass="HourCell" customModule="NoriginTestTask" customModuleProvider="target">
@@ -363,6 +362,9 @@
         </namedColor>
         <namedColor name="separator">
             <color red="0.30599999430000002" green="0.30599999430000002" blue="0.30599999430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="separator">
+            <color red="0.3059999942779541" green="0.3059999942779541" blue="0.3059999942779541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textGrayed">
             <color red="0.60799998040000003" green="0.60799998040000003" blue="0.60799998040000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

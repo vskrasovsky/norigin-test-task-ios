@@ -9,16 +9,16 @@
 import Foundation
 
 struct ProgramCellModel {
-    var startRatio: Double
-    var endRatio: Double
+    var start: TimeInterval
+    var end: TimeInterval
     var program: Program
     
     var title: String
     var timeIntervalFormatted: String
     
-    init(startRatio: Double, endRatio: Double, program: Program) {
-        self.startRatio = startRatio
-        self.endRatio = endRatio
+    init(start: TimeInterval, end: TimeInterval, program: Program) {
+        self.start = start
+        self.end = end
         self.program = program
         self.title = program.title
         self.timeIntervalFormatted = "\(DateFormatter.timeFormatter.string(from: program.start)) - \(DateFormatter.timeFormatter.string(from: program.end))"

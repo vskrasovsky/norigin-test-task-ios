@@ -9,8 +9,7 @@
 import Foundation
 import PromiseKit
 
-class EPGViewModel {
-    
+final class EPGViewModel {
     private let epgService: EPGService
     
     var isLoading: Bool = false {
@@ -28,19 +27,40 @@ class EPGViewModel {
     }
     var epgChanged: (() -> Void)?
     
-    var start: Date = Date()
-    var end: Date = Date()
-    var duration: TimeInterval = 1
+    var epgStart: TimeInterval = .leastNormalMagnitude
+    var epgEnd: TimeInterval = .greatestFiniteMagnitude
+    var duration: TimeInterval {
+        return epgEnd - epgStart
+    }
 
     var days: [Date] = []
-
     var hourCellModels: [HourCellModel] = []
+    var channelViewModels: [ChannelViewModel] = []
     
-    var channelCellModels: [ChannelViewModel] = []
+    var activePrograms: [Program] = [] {
+        didSet {
+            if activePrograms != oldValue {
+                activeProgramsChanged?()
+            }
+        }
+    }
+    var activeProgramsChanged: (() -> Void)?
 
-    
+    private let updateInterval: TimeInterval = 10
+    var timer: Timer?
+    var currentDate = Date(){
+        didSet {
+            currentDateChanged?()
+        }
+    }
+    var currentDateChanged: (() -> Void)?
+
     init(epgService: EPGService) {
         self.epgService = epgService
+        timer = Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true, block: { [weak self] _ in
+            self?.currentDate = Date()
+            self?.updateActivePrograms()
+        })
     }
     
     func loadData() {
@@ -58,8 +78,16 @@ class EPGViewModel {
     }
     
     private func updateViewModel() {
+        updateDateLimits()
+        updateDays()
+        updateHours()
+        updateChannels()
+        updateActivePrograms()
+    }
+    
+    private func updateDateLimits() {
         guard let epg = epg else { return }
-        let allPrograms = epg.channels.flatMap { $0.schedules }
+        let allPrograms = epg.channels.flatMap { $0.programs }
         var start: Date = .distantFuture
         var end: Date = .distantPast
         allPrograms.forEach { program in
@@ -70,18 +98,13 @@ class EPGViewModel {
                 end = program.end
             }
         }
-        self.start = start
-        self.end = end
-        self.duration = end.timeIntervalSince1970 - start.timeIntervalSince1970
-
-        updateDays()
-        updateHours()
-        updateChannels()
+        self.epgStart = start.timeInterval
+        self.epgEnd = end.timeInterval
     }
-    
+
     private func updateDays() {
-        var day = start.startOfDay()
-        let endDay = end.startOfDay()
+        var day = epgStart.date.startOfDay()
+        let endDay = epgEnd.date.startOfDay()
         var days = [Date]()
         while day <= endDay {
             days.append(day)
@@ -91,15 +114,13 @@ class EPGViewModel {
     }
 
     private func updateHours() {
-        var hour = start.nearestEarlierHalfAnHour()
-        let endHour = end.nearestLaterHalfAnHour()
+        var hour = epgStart.date.nearestEarlierHalfAnHour()
+        let endHour = epgEnd.date.nearestLaterHalfAnHour()
         var hourCellModels = [HourCellModel]()
         while hour < endHour {
-            let startRatio = (hour.timeIntervalSince1970 - start.timeIntervalSince1970) / duration
             let title = DateFormatter.timeFormatter.string(from: hour.halfAnHourLater())
             let hourLater = hour.hourLater()
-            let endRatio = (hourLater.timeIntervalSince1970 - start.timeIntervalSince1970) / duration
-            hourCellModels.append(HourCellModel(startRatio: startRatio, endRatio: endRatio, title: title))
+            hourCellModels.append(HourCellModel(start: hour.timeInterval - epgStart, end: hourLater.timeInterval - epgStart, title: title))
             hour = hourLater
         }
         self.hourCellModels = hourCellModels
@@ -107,14 +128,21 @@ class EPGViewModel {
     
     private func updateChannels() {
         guard let epg = epg else { return }
-        channelCellModels = epg.channels.map({ channel -> ChannelViewModel in
-            let schedules = channel.schedules.map({ p in
+        channelViewModels = epg.channels.map({ channel -> ChannelViewModel in
+            let programs = channel.programs.map({ p in
                 return ProgramCellModel(
-                    startRatio: (p.start.timeIntervalSince1970 - start.timeIntervalSince1970) / duration,
-                    endRatio: (p.end.timeIntervalSince1970 - start.timeIntervalSince1970) / duration, program: p
+                    start: p.start.timeInterval - epgStart,
+                    end: p.end.timeInterval - epgStart,
+                    program: p
                 )
             })
-            return ChannelViewModel(logoURL: channel.logoURL, schedules: schedules)
+            return ChannelViewModel(logoURL: channel.logoURL, programs: programs)
         })
+    }
+    
+    private func updateActivePrograms() {
+        guard let epg = epg else { return }
+        let allPrograms = epg.channels.flatMap { $0.programs }
+        activePrograms = allPrograms.filter { ($0.start ... $0.end).contains(currentDate) }
     }
 }

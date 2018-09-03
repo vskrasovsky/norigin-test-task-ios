@@ -14,9 +14,7 @@ let timePositionKind = "TimePositionView"
 class EPGViewController: UIViewController {
 
     @IBOutlet weak var loadingView: UIView!
-
     @IBOutlet weak var contentView: UIView!
-
     @IBOutlet weak var favouriteView: UIView! {
         didSet {
             favouriteView.layer.shadowOffset = .zero
@@ -24,171 +22,186 @@ class EPGViewController: UIViewController {
             favouriteView.layer.shadowOpacity = 1.0
         }
     }
-    
     @IBOutlet weak var daysListView: DaysListView! {
         didSet {
             daysListView.delegate = self
         }
     }
-
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             if let layout = collectionView?.collectionViewLayout as? EPGCollectionViewLayout {
                 layout.delegate = self
                 layout.register(UINib(nibName: "TimePositionView", bundle: nil), forDecorationViewOfKind: timePositionKind)
             }
-            collectionView.backgroundColor = UIColor.separator
         }
     }
     
     var viewModel: EPGViewModel! {
         didSet {
-            viewModel.isLoadingChanged = { [weak self] in
-                guard let strongSelf = self else { return }
-                strongSelf.loadingView.isHidden = !strongSelf.viewModel.isLoading
-                strongSelf.contentView.isHidden = strongSelf.viewModel.isLoading
-            }
-            viewModel.epgChanged = { [weak self] in
-                self?.reloadData()
-            }
+            setupBindings()
         }
     }
-    
-    var timer: Timer?
 
+    let channelColumnWidth: CGFloat = 75
     let oneHourWidth: CGFloat = 270
-    let updateInterval: TimeInterval = 13
-    var currentDate = Date()
 
-    var contentWidth: CGFloat {
-        return CGFloat(viewModel.duration) / 3600 * oneHourWidth
+    //points per sec
+    var scale: Double {
+        return Double(oneHourWidth) / 3600
     }
     
+    var collectionViewContentWidth: CGFloat {
+        return CGFloat(viewModel.duration * scale) + channelColumnWidth
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.titleView = UIImageView(image: UIImage(named: "noriginLogo"))
-        
-        timer = Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true, block: { [weak self] _ in
-            guard let strongSelf = self else { return }
-            strongSelf.currentDate = Date()
-            if let layout = strongSelf.collectionView.collectionViewLayout as? EPGCollectionViewLayout {
-                layout.invalidateLayout()
-            }
-        })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.loadData()
     }
 
-    private func reloadData() {
-        collectionView.reloadData()
-        daysListView.days = viewModel.days
-        daysListView.selectedDay = viewModel.days.first
+    private func setupBindings() {
+        viewModel.isLoadingChanged = { [weak self] in
+            guard let viewModel = self?.viewModel else { return }
+            self?.loadingView.isHidden = !viewModel.isLoading
+            self?.contentView.isHidden = viewModel.isLoading
+        }
+        viewModel.epgChanged = { [weak self] in
+            guard let viewModel = self?.viewModel else { return }
+            self?.collectionView.reloadData()
+            self?.daysListView.days = viewModel.days
+            self?.daysListView.selectedDay = viewModel.days.first
+        }
+        viewModel.currentDateChanged = { [weak self] in
+            if let layout = self?.collectionView.collectionViewLayout as? EPGCollectionViewLayout {
+                layout.invalidateLayout()
+            }
+        }
+        viewModel.activeProgramsChanged = { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
     
     @IBAction func scrollToNowPressed(_ sender: UIButton) {
-        let currentContentOffset = collectionView.contentOffset
-        let ratio = (currentDate.timeIntervalSince1970 - viewModel.start.timeIntervalSince1970) / viewModel.duration
-        // FIX ME:
-        var offset =  CGFloat(ratio * Double(contentWidth)) - (collectionView.bounds.width - 75) / 2
-        offset = clip(value: offset, toRange: 0 ..< maxContentOffset())
-        collectionView.setContentOffset(CGPoint(x: offset, y: currentContentOffset.y), animated: true)
+        let desiredOffset = CGFloat((viewModel.currentDate.timeInterval - viewModel.epgStart) * scale) - (collectionView.bounds.width - channelColumnWidth) / 2
+        scrollToXOffsetIfPossible(desiredOffset)
+        daysListView.selectedDay = viewModel.currentDate.startOfDay()
     }
-    
-    private func maxContentOffset() -> CGFloat {
-        return contentWidth + 75 - collectionView.bounds.width
+
+    private func scrollToXOffsetIfPossible(_ xOffset: CGFloat) {
+        let currentContentOffset = collectionView.contentOffset
+        let maxContentOffset = collectionViewContentWidth - collectionView.bounds.width
+        let offset = clip(value: xOffset, toRange: 0 ..< maxContentOffset)
+        collectionView.setContentOffset(CGPoint(x: offset, y: currentContentOffset.y), animated: true)
     }
 }
 
 extension EPGViewController: DaysListViewDelegate {
     func dayListView(_ dayListView: DaysListView, didSelectDayWith date: Date) {
-        let ratio = (max(viewModel.start.timeIntervalSince1970, date.timeIntervalSince1970) - viewModel.start.timeIntervalSince1970) / viewModel.duration
-        let currentContentOffset = collectionView.contentOffset
-        // FIX ME:
-        var offset =  CGFloat(ratio * Double(contentWidth))
-        offset = clip(value: offset, toRange: 0 ..< maxContentOffset())
-        collectionView.setContentOffset(CGPoint(x: offset, y: currentContentOffset.y), animated: true)
+        let desiredOffset = CGFloat((date.timeInterval - viewModel.epgStart) * scale)
+        scrollToXOffsetIfPossible(desiredOffset)
     }
 }
 
-extension EPGViewController: EPGCollectionViewLayoutDelegate {
-    func collectionViewContentWidth(_ collectionView: UICollectionView) -> CGFloat {
-        return contentWidth
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, xOffsetForItemAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            let hourViewModel = viewModel.hourCellModels[indexPath.item]
-            let offset =  CGFloat(hourViewModel.startRatio * Double(contentWidth))
-            return offset
-        } else {
-            let programViewModel = viewModel.channelCellModels[indexPath.section - 1].schedules[indexPath.item - 1]
-            let offset =  CGFloat(programViewModel.startRatio * Double(contentWidth))
-            return offset
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, widthForItemAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            let hourViewModel = viewModel.hourCellModels[indexPath.item]
-            let width = CGFloat((hourViewModel.endRatio - hourViewModel.startRatio) * Double(contentWidth))
-            return width
-        } else {
-            let programViewModel = viewModel.channelCellModels[indexPath.section - 1].schedules[indexPath.item - 1]
-            let width = CGFloat((programViewModel.endRatio - programViewModel.startRatio) * Double(contentWidth))
-            return width
-        }
-    }
-    
-    func collectionViewXOffsetForTimePosition(_ collectionView: UICollectionView) -> CGFloat {
-        let ratio = (currentDate.timeIntervalSince1970 - viewModel.start.timeIntervalSince1970) / viewModel.duration
-        let offset =  CGFloat(ratio * Double(contentWidth))
-        return offset
-    }
-}
-
-extension EPGViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
+extension EPGViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.channelCellModels.count + 1
+        return viewModel.channelViewModels.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return viewModel.hourCellModels.count
         } else {
-            return viewModel.channelCellModels[section - 1].schedules.count + 1
+            return viewModel.channelViewModels[section - 1].programs.count + 1
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
+            // hour cell
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourCell", for: indexPath) as! HourCell
             let hourViewModel = viewModel.hourCellModels[indexPath.item]
             cell.configure(with: hourViewModel.title)
             return cell
         } else {
             if indexPath.item == 0 {
+                // channel cell
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChannelCell", for: indexPath) as! ChannelCell
-                let channelViewModel = viewModel.channelCellModels[indexPath.section - 1]
+                let channelViewModel = viewModel.channelViewModels[indexPath.section - 1]
                 cell.configure(with: channelViewModel.logoURL)
                 return cell
             } else {
+                // program cell
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProgramCell", for: indexPath) as! ProgramCell
-                let programViewModel = viewModel.channelCellModels[indexPath.section - 1].schedules[indexPath.item - 1]
-                let program = programViewModel.program
-                let active = program.start <= currentDate && currentDate <= program.end
+                let programViewModel = viewModel.channelViewModels[indexPath.section - 1].programs[indexPath.item - 1]
+                let active = viewModel.activePrograms.contains(programViewModel.program)
                 cell.configure(with: programViewModel, active: active)
                 return cell
             }
         }
     }
-    
+}
+
+extension EPGViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //handle only user dragging, not programmatically scrolling
         guard scrollView.isDragging else { return }
-        //FIX ME: optimize this method
-        let ratio = (scrollView.contentOffset.x + (collectionView.bounds.width - 75) / 2) / contentWidth
-        let interval = Double(ratio) * viewModel.duration + viewModel.start.timeIntervalSince1970
-        let day = Date(timeIntervalSince1970: interval).startOfDay()
-        daysListView.selectedDay = day
+        let centerOfScreenOffset = (scrollView.contentOffset.x + (collectionView.bounds.width - channelColumnWidth) / 2)
+        let centerOfScreenSecondsOffset = Double(centerOfScreenOffset) / scale
+        let centerOfScreenDate = (viewModel.epgStart + centerOfScreenSecondsOffset).date
+        daysListView.selectedDay = centerOfScreenDate.startOfDay()
+    }
+}
+
+extension EPGViewController: EPGCollectionViewLayoutDelegate {
+    func collectionViewContentWidth(_ collectionView: UICollectionView) -> CGFloat {
+        return collectionViewContentWidth
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, xOffsetForItemAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            // hour cell
+            let start = viewModel.hourCellModels[indexPath.item].start
+            return channelColumnWidth + CGFloat(start * scale)
+        } else {
+            if indexPath.item == 0 {
+                // channel cell
+                return collectionView.contentOffset.x
+            } else {
+                // program cell
+                let start = viewModel.channelViewModels[indexPath.section - 1].programs[indexPath.item - 1].start
+                return channelColumnWidth + CGFloat(start * scale)
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, widthForItemAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            // hour cell
+            let hourViewModel = viewModel.hourCellModels[indexPath.item]
+            return CGFloat((hourViewModel.end - hourViewModel.start) * scale)
+        } else {
+            if indexPath.item == 0 {
+                // channel cell
+                return channelColumnWidth
+            } else {
+                // program cell
+                let programViewModel = viewModel.channelViewModels[indexPath.section - 1].programs[indexPath.item - 1]
+                return CGFloat((programViewModel.end - programViewModel.start) * scale)
+            }
+        }
+    }
+    
+    func collectionViewXOffsetForTimePosition(_ collectionView: UICollectionView) -> CGFloat {
+        return channelColumnWidth + CGFloat((viewModel.currentDate.timeInterval - viewModel.epgStart) * scale)
+    }
+    
+    func collectionViewTimePositionVisible(_ collectionView: UICollectionView) -> Bool {
+        let xOffset = CGFloat((viewModel.currentDate.timeInterval - viewModel.epgStart) * scale)
+        return collectionView.contentOffset.x < xOffset
     }
 }

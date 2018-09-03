@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 import TRON
 
-struct Program: Decodable {
+struct Program: Decodable, Equatable {
     var id: String
     var title: String
     var start: Date

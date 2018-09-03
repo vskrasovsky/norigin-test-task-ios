@@ -11,7 +11,7 @@ import PromiseKit
 import TRON
 
 class WebService {
-    let loader: WebLoader
+    private let loader: WebLoader
     private let headers: [String: String] = ["Accept": "application/json"]
     
     init(loader: WebLoader) {

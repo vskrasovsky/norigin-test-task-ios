@@ -12,7 +12,7 @@ struct Channel: Decodable {
     var id: String
     var title: String
     var logoURL: String
-    var schedules: [Program]
+    var programs: [Program]
     
     enum CodingKeys: CodingKey {
         case id
@@ -30,21 +30,16 @@ struct Channel: Decodable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(String.self, forKey: .id)
         title = try values.decode(String.self, forKey: .title)
-        let schedules = try values.decode([Program].self, forKey: .schedules)
+        let programs = try values.decode([Program].self, forKey: .schedules)
         
         let imagesInfo = try values.nestedContainer(keyedBy: ImagesKeys.self, forKey: .images)
         logoURL = try imagesInfo.decode(String.self, forKey: .logo)
         
-        var result: [Program] = []
-        for i in 0 ... 2 {
-            result += schedules.map({ program -> Program in
-                var program = program
-                program.start = program.start.daysLater(count: i)
-                program.end = program.end.daysLater(count: i)
-                return program
-            })
+        self.programs += programs.map { program -> Program in
+            var program = program
+            program.start = program.start.daysLater(count: i)
+            program.end = program.end.daysLater(count: i)
+            return program
         }
-        self.schedules = result
-//        self.schedules = schedules
     }
 }

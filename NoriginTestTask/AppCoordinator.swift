@@ -9,9 +9,7 @@
 import UIKit
 
 class AppCoordinator {
-    
     private let window: UIWindow
-
     private let webLoader = TRONWebLoader()
 
     init(window: UIWindow) {
@@ -30,7 +28,6 @@ class AppCoordinator {
         tabBarController.selectedViewController = epgViewController
         window.rootViewController = tabBarController
     }
-    
     
     private func homeViewController() -> UIViewController {
         let viewController = UIViewController()
@@ -75,5 +72,4 @@ class AppCoordinator {
         tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         return tabBarItem
     }
-    
 }
