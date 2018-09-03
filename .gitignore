@@ -6,6 +6,10 @@
 build/
 DerivedData/
 
+##npm 
+node_modules/
+package_lock.json
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
