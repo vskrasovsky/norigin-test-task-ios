@@ -9,7 +9,7 @@
 import Foundation
 import PromiseKit
 
-final class EPGViewModel {
+class EPGViewModel {
     private let epgService: EPGService
     
     var isLoading: Bool = false {
@@ -21,11 +21,15 @@ final class EPGViewModel {
 
     private var epg: EPG? {
         didSet {
+            guard epg != nil else { return }
             updateViewModel()
             epgChanged?()
         }
     }
     var epgChanged: (() -> Void)?
+    var haveData: Bool {
+        return epg != nil
+    }
     
     var epgStart: TimeInterval = .leastNormalMagnitude
     var epgEnd: TimeInterval = .greatestFiniteMagnitude
@@ -34,6 +38,20 @@ final class EPGViewModel {
     }
 
     var days: [Date] = []
+    var selectedDay: Date? {
+        didSet {
+            if selectedDay != oldValue {
+                updateDayModels()
+            }
+        }
+    }
+    var dayCellModels: [DayCellModel] = [] {
+        didSet {
+            dayCellModelsChanged?()
+        }
+    }
+    var dayCellModelsChanged: (() -> Void)?
+
     var hourCellModels: [HourCellModel] = []
     var channelViewModels: [ChannelViewModel] = []
     
@@ -65,6 +83,7 @@ final class EPGViewModel {
     
     func loadData() {
         firstly { () -> Promise<EPG> in
+            epg = nil
             isLoading = true
             return epgService.epg()
         }
@@ -108,9 +127,14 @@ final class EPGViewModel {
         var days = [Date]()
         while day <= endDay {
             days.append(day)
-            day = day.dayLater()
+            day = day.later(byAdding: .day, value: 1)
         }
         self.days = days
+        selectedDay = days.first
+    }
+
+    private func updateDayModels() {
+        dayCellModels = days.map { DayCellModel(day: $0, selected: $0 == selectedDay) }
     }
 
     private func updateHours() {
@@ -119,7 +143,7 @@ final class EPGViewModel {
         var hourCellModels = [HourCellModel]()
         while hour < endHour {
             let title = DateFormatter.timeFormatter.string(from: hour.halfAnHourLater())
-            let hourLater = hour.hourLater()
+            let hourLater = hour.later(byAdding: .hour, value: 1)
             hourCellModels.append(HourCellModel(start: hour.timeInterval - epgStart, end: hourLater.timeInterval - epgStart, title: title))
             hour = hourLater
         }

@@ -35,11 +35,17 @@ struct Channel: Decodable {
         let imagesInfo = try values.nestedContainer(keyedBy: ImagesKeys.self, forKey: .images)
         logoURL = try imagesInfo.decode(String.self, forKey: .logo)
         
-        self.programs += programs.map { program -> Program in
-            var program = program
-            program.start = program.start.daysLater(count: i)
-            program.end = program.end.daysLater(count: i)
-            return program
+        
+        // duplicate same epg for next two days for test purposes
+        var extendedPrograms: [Program] = []
+        for i in 0 ... 2 {
+            extendedPrograms += programs.map { program -> Program in
+                var program = program
+                program.start = program.start.later(byAdding: .day, value: i)
+                program.end = program.end.later(byAdding: .day, value: i)
+                return program
+            }
         }
+        self.programs = extendedPrograms
     }
 }

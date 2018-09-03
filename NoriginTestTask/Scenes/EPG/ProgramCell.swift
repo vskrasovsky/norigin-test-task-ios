@@ -13,9 +13,9 @@ class ProgramCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeIntervalLabel: UILabel!
 
-    func configure(with viewModel: ProgramCellModel, active: Bool) {
-        titleLabel.text = viewModel.title
-        timeIntervalLabel.text = viewModel.timeIntervalFormatted
+    func configure(with cellModel: ProgramCellModel, active: Bool) {
+        titleLabel.text = cellModel.title
+        timeIntervalLabel.text = cellModel.timeIntervalFormatted
         view.backgroundColor = active ? .programActive : .programBackground
     }
 }

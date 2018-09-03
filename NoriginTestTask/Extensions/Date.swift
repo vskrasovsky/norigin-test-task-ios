@@ -9,7 +9,6 @@
 import Foundation
 
 extension Date {
-    
     var timeInterval: TimeInterval {
         return timeIntervalSince1970
     }
@@ -66,15 +65,9 @@ extension Date {
     func startOfDay() -> Date {
         return Calendar.current.startOfDay(for: self)
     }
-    func dayLater() -> Date {
-        return Calendar.current.date(byAdding: .day, value: 1, to: self) ?? self
-    }
-    func daysLater(count: Int = 1) -> Date {
-        return Calendar.current.date(byAdding: .day, value: count, to: self) ?? self
-    }
-
-    func hourLater() -> Date {
-        return Calendar.current.date(byAdding: .hour, value: 1, to: self) ?? self
+    
+    func later(byAdding component: Calendar.Component, value: Int) -> Date {
+        return Calendar.current.date(byAdding: component, value: value, to: self) ?? self
     }
 }
 

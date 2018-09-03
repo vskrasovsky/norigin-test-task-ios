@@ -10,7 +10,6 @@ import Kingfisher
 import UIKit
 
 class ChannelCell: UICollectionViewCell {
-    
     @IBOutlet weak var imageView: UIImageView!
     
     func configure(with imageURL: String) {

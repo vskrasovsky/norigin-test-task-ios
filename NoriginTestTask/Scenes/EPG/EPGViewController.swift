@@ -12,8 +12,8 @@ import UIKit
 let timePositionKind = "TimePositionView"
 
 class EPGViewController: UIViewController {
-
     @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var favouriteView: UIView! {
         didSet {
@@ -68,13 +68,13 @@ class EPGViewController: UIViewController {
         viewModel.isLoadingChanged = { [weak self] in
             guard let viewModel = self?.viewModel else { return }
             self?.loadingView.isHidden = !viewModel.isLoading
-            self?.contentView.isHidden = viewModel.isLoading
+            self?.contentView.isHidden = viewModel.isLoading || !viewModel.haveData
+            self?.errorView.isHidden = viewModel.isLoading || viewModel.haveData
         }
         viewModel.epgChanged = { [weak self] in
             guard let viewModel = self?.viewModel else { return }
             self?.collectionView.reloadData()
-            self?.daysListView.days = viewModel.days
-            self?.daysListView.selectedDay = viewModel.days.first
+            self?.daysListView.dayCellModels = viewModel.dayCellModels
         }
         viewModel.currentDateChanged = { [weak self] in
             if let layout = self?.collectionView.collectionViewLayout as? EPGCollectionViewLayout {
@@ -84,12 +84,20 @@ class EPGViewController: UIViewController {
         viewModel.activeProgramsChanged = { [weak self] in
             self?.collectionView.reloadData()
         }
+        viewModel.dayCellModelsChanged = { [weak self] in
+            guard let viewModel = self?.viewModel else { return }
+            self?.daysListView.dayCellModels = viewModel.dayCellModels
+        }
+    }
+    
+    @IBAction func reloadPressed(_ sender: UIButton) {
+        viewModel.loadData()
     }
     
     @IBAction func scrollToNowPressed(_ sender: UIButton) {
         let desiredOffset = CGFloat((viewModel.currentDate.timeInterval - viewModel.epgStart) * scale) - (collectionView.bounds.width - channelColumnWidth) / 2
         scrollToXOffsetIfPossible(desiredOffset)
-        daysListView.selectedDay = viewModel.currentDate.startOfDay()
+        viewModel.selectedDay = viewModel.currentDate.startOfDay()
     }
 
     private func scrollToXOffsetIfPossible(_ xOffset: CGFloat) {
@@ -102,6 +110,7 @@ class EPGViewController: UIViewController {
 
 extension EPGViewController: DaysListViewDelegate {
     func dayListView(_ dayListView: DaysListView, didSelectDayWith date: Date) {
+        viewModel.selectedDay = date
         let desiredOffset = CGFloat((date.timeInterval - viewModel.epgStart) * scale)
         scrollToXOffsetIfPossible(desiredOffset)
     }
@@ -153,7 +162,7 @@ extension EPGViewController: UICollectionViewDelegate {
         let centerOfScreenOffset = (scrollView.contentOffset.x + (collectionView.bounds.width - channelColumnWidth) / 2)
         let centerOfScreenSecondsOffset = Double(centerOfScreenOffset) / scale
         let centerOfScreenDate = (viewModel.epgStart + centerOfScreenSecondsOffset).date
-        daysListView.selectedDay = centerOfScreenDate.startOfDay()
+        viewModel.selectedDay = centerOfScreenDate.startOfDay()
     }
 }
 

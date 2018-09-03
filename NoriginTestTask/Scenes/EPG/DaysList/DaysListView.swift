@@ -13,46 +13,20 @@ protocol DaysListViewDelegate: class {
 }
 
 class DaysListView: UIView {
-
     @IBOutlet weak var collectionView: UICollectionView!
 
     weak var delegate: DaysListViewDelegate?
     
-    var days: [Date] = [] {
-        didSet {
-            updateDayModels()
-        }
-    }
-    var selectedDay: Date? {
-        didSet {
-            if selectedDay != oldValue {
-                updateDayModels()
-            }
-        }
-    }
-    
     var dayCellModels: [DayCellModel] = [] {
         didSet {
             collectionView.reloadData()
-            print(dayCellModels)
         }
     }
-    
-    private func updateDayModels() {
-        dayCellModels = days.map({ day -> DayCellModel in
-            let dayOfWeekStr = DateFormatter.dayOfWeekFormatter.string(from: day)
-            let dateStr = DateFormatter.dayMonthDateFormatter.string(from: day)
-            return DayCellModel(dayOfWeekStr: dayOfWeekStr,
-                                dateStr: dateStr,
-                                selected: day == selectedDay)
-        })
-    }
-    
 }
 
 extension DaysListView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return days.count
+        return dayCellModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -65,7 +39,6 @@ extension DaysListView: UICollectionViewDataSource {
 
 extension DaysListView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedDay = days[indexPath.row]
-        delegate?.dayListView(self, didSelectDayWith: days[indexPath.row])
+        delegate?.dayListView(self, didSelectDayWith: dayCellModels[indexPath.row].day)
     }
 }
