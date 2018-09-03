@@ -36,62 +36,37 @@ class EPGViewController: UIViewController {
             if let layout = collectionView?.collectionViewLayout as? EPGCollectionViewLayout {
                 layout.delegate = self
                 layout.register(UINib(nibName: "TimePositionView", bundle: nil), forDecorationViewOfKind: timePositionKind)
-
             }
             collectionView.backgroundColor = UIColor.separator
         }
     }
     
-    var viewModel: EPGViewModel1!
-    let epgRESTService = EPGRESTService(loader: TRONWebLoader())
-
-    var epgViewModel: EPGViewModel? {
+    var viewModel: EPGViewModel! {
         didSet {
-            collectionView.reloadData()
+            viewModel.isLoadingChanged = { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.loadingView.isHidden = !strongSelf.viewModel.isLoading
+                strongSelf.contentView.isHidden = strongSelf.viewModel.isLoading
+            }
+            viewModel.epgChanged = { [weak self] in
+                self?.reloadData()
+            }
         }
     }
     
-    var hours: [HourCellModel] {
-        return epgViewModel?.hours ?? []
-    }
-    
-    var channels: [ChannelViewModel] {
-        return epgViewModel?.channels ?? []
-    }
-
     var timer: Timer?
 
     let oneHourWidth: CGFloat = 270
-    let updateInterval: TimeInterval = 3
+    let updateInterval: TimeInterval = 13
     var currentDate = Date()
 
     var contentWidth: CGFloat {
-        guard let epgViewModel = epgViewModel else {
-            return 0
-        }
-        return CGFloat(epgViewModel.duration) / 3600 * oneHourWidth
+        return CGFloat(viewModel.duration) / 3600 * oneHourWidth
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.titleView = UIImageView(image: UIImage(named: "noriginLogo"))
-        firstly { () -> Promise<EPG> in
-            loadingView.isHidden = false
-            contentView.isHidden = true
-            return epgRESTService.epg()
-        }.map(EPGViewModel.init)
-        .done { [weak self] epgViewModel in
-            self?.epgViewModel = epgViewModel
-            let days = epgViewModel.days
-            self?.daysListView.days = days
-            self?.daysListView.selectedDay = days.first
-
-        }.ensure { [weak self] in
-            self?.contentView.isHidden = false
-            self?.loadingView.isHidden = true
-        }.catch { error in
-            print(error.localizedDescription)
-        }
         
         timer = Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true, block: { [weak self] _ in
             guard let strongSelf = self else { return }
@@ -100,12 +75,18 @@ class EPGViewController: UIViewController {
                 layout.invalidateLayout()
             }
         })
+        viewModel.loadData()
     }
 
+    private func reloadData() {
+        collectionView.reloadData()
+        daysListView.days = viewModel.days
+        daysListView.selectedDay = viewModel.days.first
+    }
+    
     @IBAction func scrollToNowPressed(_ sender: UIButton) {
         let currentContentOffset = collectionView.contentOffset
-        guard let epg = epgViewModel else { return }
-        let ratio = (currentDate.timeIntervalSince1970 - epg.startInterval) / epg.duration
+        let ratio = (currentDate.timeIntervalSince1970 - viewModel.start.timeIntervalSince1970) / viewModel.duration
         // FIX ME:
         var offset =  CGFloat(ratio * Double(contentWidth)) - (collectionView.bounds.width - 75) / 2
         offset = clip(value: offset, toRange: 0 ..< maxContentOffset())
@@ -119,8 +100,7 @@ class EPGViewController: UIViewController {
 
 extension EPGViewController: DaysListViewDelegate {
     func dayListView(_ dayListView: DaysListView, didSelectDayWith date: Date) {
-        guard let epg = epgViewModel else { return }
-        let ratio = (max(epg.startInterval, date.timeIntervalSince1970) - epg.startInterval) / epg.duration
+        let ratio = (max(viewModel.start.timeIntervalSince1970, date.timeIntervalSince1970) - viewModel.start.timeIntervalSince1970) / viewModel.duration
         let currentContentOffset = collectionView.contentOffset
         // FIX ME:
         var offset =  CGFloat(ratio * Double(contentWidth))
@@ -136,11 +116,11 @@ extension EPGViewController: EPGCollectionViewLayoutDelegate {
     
     func collectionView(_ collectionView: UICollectionView, xOffsetForItemAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            let hourViewModel = hours[indexPath.item]
+            let hourViewModel = viewModel.hourCellModels[indexPath.item]
             let offset =  CGFloat(hourViewModel.startRatio * Double(contentWidth))
             return offset
         } else {
-            let programViewModel = channels[indexPath.section - 1].schedules[indexPath.item - 1]
+            let programViewModel = viewModel.channelCellModels[indexPath.section - 1].schedules[indexPath.item - 1]
             let offset =  CGFloat(programViewModel.startRatio * Double(contentWidth))
             return offset
         }
@@ -148,19 +128,18 @@ extension EPGViewController: EPGCollectionViewLayoutDelegate {
     
     func collectionView(_ collectionView: UICollectionView, widthForItemAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            let hourViewModel = hours[indexPath.item]
+            let hourViewModel = viewModel.hourCellModels[indexPath.item]
             let width = CGFloat((hourViewModel.endRatio - hourViewModel.startRatio) * Double(contentWidth))
             return width
         } else {
-            let programViewModel = channels[indexPath.section - 1].schedules[indexPath.item - 1]
+            let programViewModel = viewModel.channelCellModels[indexPath.section - 1].schedules[indexPath.item - 1]
             let width = CGFloat((programViewModel.endRatio - programViewModel.startRatio) * Double(contentWidth))
             return width
         }
     }
     
     func collectionViewXOffsetForTimePosition(_ collectionView: UICollectionView) -> CGFloat {
-        guard let epg = epgViewModel else { return 0 }
-        let ratio = (currentDate.timeIntervalSince1970 - epg.startInterval) / epg.duration
+        let ratio = (currentDate.timeIntervalSince1970 - viewModel.start.timeIntervalSince1970) / viewModel.duration
         let offset =  CGFloat(ratio * Double(contentWidth))
         return offset
     }
@@ -169,32 +148,32 @@ extension EPGViewController: EPGCollectionViewLayoutDelegate {
 extension EPGViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return channels.count + 1
+        return viewModel.channelCellModels.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return hours.count
+            return viewModel.hourCellModels.count
         } else {
-            return channels[section - 1].schedules.count + 1
+            return viewModel.channelCellModels[section - 1].schedules.count + 1
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourCell", for: indexPath) as! HourCell
-            let hourViewModel = hours[indexPath.item]
+            let hourViewModel = viewModel.hourCellModels[indexPath.item]
             cell.configure(with: hourViewModel.title)
             return cell
         } else {
             if indexPath.item == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChannelCell", for: indexPath) as! ChannelCell
-                let channelViewModel = channels[indexPath.section - 1]
+                let channelViewModel = viewModel.channelCellModels[indexPath.section - 1]
                 cell.configure(with: channelViewModel.logoURL)
                 return cell
             } else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProgramCell", for: indexPath) as! ProgramCell
-                let programViewModel = channels[indexPath.section - 1].schedules[indexPath.item - 1]
+                let programViewModel = viewModel.channelCellModels[indexPath.section - 1].schedules[indexPath.item - 1]
                 let program = programViewModel.program
                 let active = program.start <= currentDate && currentDate <= program.end
                 cell.configure(with: programViewModel, active: active)
@@ -207,9 +186,8 @@ extension EPGViewController: UICollectionViewDataSource, UICollectionViewDelegat
         //handle only user dragging, not programmatically scrolling
         guard scrollView.isDragging else { return }
         //FIX ME: optimize this method
-        guard let epg = epgViewModel else { return }
         let ratio = (scrollView.contentOffset.x + (collectionView.bounds.width - 75) / 2) / contentWidth
-        let interval = Double(ratio) * epg.duration + epg.startInterval
+        let interval = Double(ratio) * viewModel.duration + viewModel.start.timeIntervalSince1970
         let day = Date(timeIntervalSince1970: interval).startOfDay()
         daysListView.selectedDay = day
     }

@@ -11,7 +11,7 @@
 		CE170316213BD948003AF8B7 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE170315213BD948003AF8B7 /* Math.swift */; };
 		CE17031B213C8673003AF8B7 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17031A213C8673003AF8B7 /* AppCoordinator.swift */; };
 		CE17031D213C8A8F003AF8B7 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17031C213C8A8F003AF8B7 /* UIStoryboard.swift */; };
-		CE17031F213C8ADA003AF8B7 /* EPGViewModel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17031E213C8ADA003AF8B7 /* EPGViewModel1.swift */; };
+		CE17031F213C8ADA003AF8B7 /* EPGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE17031E213C8ADA003AF8B7 /* EPGViewModel.swift */; };
 		CE170321213C9216003AF8B7 /* EPGService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE170320213C9216003AF8B7 /* EPGService.swift */; };
 		CE536DB72135797D00A1F7F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DB62135797D00A1F7F1 /* AppDelegate.swift */; };
 		CE536DB92135797D00A1F7F1 /* EPGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DB82135797D00A1F7F1 /* EPGViewController.swift */; };
@@ -27,7 +27,6 @@
 		CE536DDF21369CB400A1F7F1 /* EPG.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE536DDE21369CB400A1F7F1 /* EPG.swift */; };
 		CE7FDADF213836DB00C4844E /* EPGCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDADE213836DB00C4844E /* EPGCollectionViewLayout.swift */; };
 		CE7FDAE1213938EA00C4844E /* ProgramCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDAE0213938EA00C4844E /* ProgramCell.swift */; };
-		CE7FDB042139406400C4844E /* EPGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB032139406400C4844E /* EPGViewModel.swift */; };
 		CE7FDB062139408F00C4844E /* ChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB052139408F00C4844E /* ChannelViewModel.swift */; };
 		CE7FDB08213940AA00C4844E /* ProgramCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB07213940AA00C4844E /* ProgramCellModel.swift */; };
 		CE7FDB0A2139460700C4844E /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7FDB092139460700C4844E /* DateFormatter.swift */; };
@@ -50,7 +49,7 @@
 		CE170315213BD948003AF8B7 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		CE17031A213C8673003AF8B7 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		CE17031C213C8A8F003AF8B7 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
-		CE17031E213C8ADA003AF8B7 /* EPGViewModel1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGViewModel1.swift; sourceTree = "<group>"; };
+		CE17031E213C8ADA003AF8B7 /* EPGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGViewModel.swift; sourceTree = "<group>"; };
 		CE170320213C9216003AF8B7 /* EPGService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGService.swift; sourceTree = "<group>"; };
 		CE536DB32135797D00A1F7F1 /* NoriginTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoriginTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE536DB62135797D00A1F7F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +67,6 @@
 		CE536DDE21369CB400A1F7F1 /* EPG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPG.swift; sourceTree = "<group>"; };
 		CE7FDADE213836DB00C4844E /* EPGCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGCollectionViewLayout.swift; sourceTree = "<group>"; };
 		CE7FDAE0213938EA00C4844E /* ProgramCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCell.swift; sourceTree = "<group>"; };
-		CE7FDB032139406400C4844E /* EPGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGViewModel.swift; sourceTree = "<group>"; };
 		CE7FDB052139408F00C4844E /* ChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewModel.swift; sourceTree = "<group>"; };
 		CE7FDB07213940AA00C4844E /* ProgramCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCellModel.swift; sourceTree = "<group>"; };
 		CE7FDB092139460700C4844E /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
@@ -212,16 +210,14 @@
 			children = (
 				CE92FD2A213ABC5500FB7FE7 /* DaysList */,
 				CE536DB82135797D00A1F7F1 /* EPGViewController.swift */,
-				CE17031E213C8ADA003AF8B7 /* EPGViewModel1.swift */,
-				CE7FDB032139406400C4844E /* EPGViewModel.swift */,
-				CE7FDB052139408F00C4844E /* ChannelViewModel.swift */,
-				CE7FDB07213940AA00C4844E /* ProgramCellModel.swift */,
-				CE92FD212139F22900FB7FE7 /* HourCellModel.swift */,
-				CE92FD2F213ABFBE00FB7FE7 /* DayCellModel.swift */,
-				CE7FDADE213836DB00C4844E /* EPGCollectionViewLayout.swift */,
-				CE7FDAE0213938EA00C4844E /* ProgramCell.swift */,
-				CE92FD1F21398A9700FB7FE7 /* ChannelCell.swift */,
+				CE17031E213C8ADA003AF8B7 /* EPGViewModel.swift */,
 				CE92FD25213A893800FB7FE7 /* HourCell.swift */,
+				CE92FD212139F22900FB7FE7 /* HourCellModel.swift */,
+				CE92FD1F21398A9700FB7FE7 /* ChannelCell.swift */,
+				CE7FDB052139408F00C4844E /* ChannelViewModel.swift */,
+				CE7FDAE0213938EA00C4844E /* ProgramCell.swift */,
+				CE7FDB07213940AA00C4844E /* ProgramCellModel.swift */,
+				CE7FDADE213836DB00C4844E /* EPGCollectionViewLayout.swift */,
 				CE92FD27213AA3B500FB7FE7 /* TimePositionView.xib */,
 			);
 			path = EPG;
@@ -232,6 +228,7 @@
 			children = (
 				CE92FD2B213ABC8A00FB7FE7 /* DaysListView.swift */,
 				CE92FD2D213ABDF800FB7FE7 /* DayCell.swift */,
+				CE92FD2F213ABFBE00FB7FE7 /* DayCellModel.swift */,
 			);
 			path = DaysList;
 			sourceTree = "<group>";
@@ -376,12 +373,11 @@
 				CE7FDB0C213985BF00C4844E /* UIColor.swift in Sources */,
 				CE170321213C9216003AF8B7 /* EPGService.swift in Sources */,
 				CE536DD22135BC8300A1F7F1 /* RequestConfig.swift in Sources */,
-				CE7FDB042139406400C4844E /* EPGViewModel.swift in Sources */,
 				CE92FD2C213ABC8A00FB7FE7 /* DaysListView.swift in Sources */,
 				CE92FD2E213ABDF800FB7FE7 /* DayCell.swift in Sources */,
 				CE17031D213C8A8F003AF8B7 /* UIStoryboard.swift in Sources */,
 				CE7FDB08213940AA00C4844E /* ProgramCellModel.swift in Sources */,
-				CE17031F213C8ADA003AF8B7 /* EPGViewModel1.swift in Sources */,
+				CE17031F213C8ADA003AF8B7 /* EPGViewModel.swift in Sources */,
 				CE536DD82136857100A1F7F1 /* Program.swift in Sources */,
 				CE7FDB0A2139460700C4844E /* DateFormatter.swift in Sources */,
 				CE536DDB213699CF00A1F7F1 /* EPGRESTService.swift in Sources */,

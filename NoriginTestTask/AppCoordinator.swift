@@ -49,7 +49,7 @@ class AppCoordinator {
     private func epgViewController() -> UIViewController {
         let viewController = UIStoryboard.instantiate(EPGViewController.self)
         let epgRESTService = EPGRESTService(loader: webLoader)
-        let viewModel = EPGViewModel1(epgService: epgRESTService)
+        let viewModel = EPGViewModel(epgService: epgRESTService)
         viewController.viewModel = viewModel
         let navigationController = UINavigationController(rootViewController: viewController)
         viewController.tabBarItem = tabBarItemWithImage(named: "listTab")
