@@ -17,6 +17,8 @@ protocol EPGCollectionViewLayoutDelegate: class {
 }
 
 class EPGCollectionViewLayout: UICollectionViewFlowLayout {
+    static let timePositionViewKind = "timePositionViewKind"
+
     weak var delegate: EPGCollectionViewLayoutDelegate!
     
     fileprivate var hourHeight: CGFloat = 40
@@ -48,7 +50,7 @@ class EPGCollectionViewLayout: UICollectionViewFlowLayout {
         }
         
         if let timePositionViewAttributes = self.layoutAttributesForDecorationView(
-            ofKind:timePositionKind, at: IndexPath(item: 0, section: 0)) {
+            ofKind: EPGCollectionViewLayout.timePositionViewKind, at: IndexPath(item: 0, section: 0)) {
                 cache.append(timePositionViewAttributes)
         }
     }
@@ -85,9 +87,10 @@ class EPGCollectionViewLayout: UICollectionViewFlowLayout {
         return attributes
     }
     
+    // attributes for orange time line
     override func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-            guard let collectionView = collectionView, elementKind == timePositionKind else { return nil }
-            let attributes = UICollectionViewLayoutAttributes(forDecorationViewOfKind: timePositionKind, with: indexPath)
+            guard let collectionView = collectionView, elementKind == EPGCollectionViewLayout.timePositionViewKind else { return nil }
+            let attributes = UICollectionViewLayoutAttributes(forDecorationViewOfKind: EPGCollectionViewLayout.timePositionViewKind, with: indexPath)
             attributes.zIndex = 3
             let xOffset = delegate.collectionViewXOffsetForTimePosition(collectionView) - timePositionViewWidth / 2
             let height: CGFloat

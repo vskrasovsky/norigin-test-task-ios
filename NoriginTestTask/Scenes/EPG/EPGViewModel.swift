@@ -64,6 +64,7 @@ class EPGViewModel {
     }
     var activeProgramsChanged: (() -> Void)?
 
+    // this should be enough for smooth update of time line
     private let updateInterval: TimeInterval = 10
     var timer: Timer?
     var currentDate = Date(){

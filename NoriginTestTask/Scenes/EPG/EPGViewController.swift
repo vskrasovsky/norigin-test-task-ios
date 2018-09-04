@@ -9,8 +9,6 @@
 import PromiseKit
 import UIKit
 
-let timePositionKind = "TimePositionView"
-
 class EPGViewController: UIViewController {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var errorView: UIView!
@@ -31,7 +29,7 @@ class EPGViewController: UIViewController {
         didSet {
             if let layout = collectionView?.collectionViewLayout as? EPGCollectionViewLayout {
                 layout.delegate = self
-                layout.register(UINib(nibName: "TimePositionView", bundle: nil), forDecorationViewOfKind: timePositionKind)
+                layout.register(UINib(nibName: "TimePositionView", bundle: nil), forDecorationViewOfKind: EPGCollectionViewLayout.timePositionViewKind)
             }
         }
     }
@@ -116,6 +114,8 @@ extension EPGViewController: DaysListViewDelegate {
     }
 }
 
+// For demo project data source is presented by ViewController itself.
+// Separate object could be used for more complex scenario
 extension EPGViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.channelViewModels.count + 1
